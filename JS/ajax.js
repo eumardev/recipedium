@@ -146,58 +146,63 @@ $(document).ready(function () {
     });
   });
 
-// Modificaicon de notificación con AJAX
-$(document).on("submit", "#modificaNotificacionForm", function (e) {
-  e.preventDefault();
-  if (typeof validateModiNotificacionForm === "function" && !validateModiNotificacionForm()) {
-    return false;
-  }
-  $.ajax({
-    type: "POST",
-    url: "./modiNotificacion.php",
-    data: $(this).serialize(),
-    success: function (response) {
-      $("#divRespuestaModificacionNotificacion").html("<p>" + response + "</p>");
-      if (response.includes("Notificacion modificada correctamente")) {
-        $("#modificaNotificacionForm")[0].reset();
-      }
-    },
-    error: function () {
-      $("#divRespuestaModificacionNotificacion").html(
-        "<p>Error al modificar la notificación. Por favor, intente nuevamente.</p>"
-      );
-    },
-  });
-});
-
-// Modificación de receta con AJAX
-
-$(document).on("submit", "#modificaRecetaForm", function (e) {
+  // Modificaicon de notificación con AJAX
+  $(document).on("submit", "#modificaNotificacionForm", function (e) {
     e.preventDefault();
-        console.log("AJAX submit capturado");
+    if (
+      typeof validateModiNotificacionForm === "function" &&
+      !validateModiNotificacionForm()
+    ) {
+      return false;
+    }
+    $.ajax({
+      type: "POST",
+      url: "./modiNotificacion.php",
+      data: $(this).serialize(),
+      success: function (response) {
+        $("#divRespuestaModificacionNotificacion").html(
+          "<p>" + response + "</p>"
+        );
+        if (response.includes("Notificacion modificada correctamente")) {
+          $("#modificaNotificacionForm")[0].reset();
+        }
+      },
+      error: function () {
+        $("#divRespuestaModificacionNotificacion").html(
+          "<p>Error al modificar la notificación. Por favor, intente nuevamente.</p>"
+        );
+      },
+    });
+  });
+
+  // Modificación de receta con AJAX
+
+  $(document).on("submit", "#modificaRecetaForm", function (e) {
+    e.preventDefault();
+    console.log("AJAX submit capturado");
     if (typeof validateRecetaForm === "function" && !validateRecetaForm()) {
-        return false;
+      return false;
     }
     var formData = new FormData(this);
     $.ajax({
-        type: "POST",
-        url: "./modiReceta.php",
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function (response) {
-            $("#divRespuestaModificacionReceta").html(response);
-            if (response.includes("Recetilla modificada correctamente")) {
-                $("#modificaRecetaForm")[0].reset();
-            }
-        },
-        error: function () {
-            $("#divRespuestaModificacionReceta").html(
-                '<div class="error-message">Error al modificar la receta. Por favor, intente nuevamente.</div>'
-            );
-        },
+      type: "POST",
+      url: "./modiReceta.php",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        $("#divRespuestaModificacionReceta").html(response);
+        if (response.includes("Recetilla modificada correctamente")) {
+          $("#modificaRecetaForm")[0].reset();
+        }
+      },
+      error: function () {
+        $("#divRespuestaModificacionReceta").html(
+          '<div class="error-message">Error al modificar la receta. Por favor, intente nuevamente.</div>'
+        );
+      },
     });
-});
+  });
 
   // Guardar recetas públicas con AJAX
   $(document).on("click", ".guardar-receta", function (e) {
@@ -290,96 +295,96 @@ $(document).on("submit", "#modificaRecetaForm", function (e) {
       },
     });
   });
-});
 
-//elimiar usuario
-$(document).on("click", ".eliminar-usuario", function (e) {
-  e.preventDefault();
-  if (!confirm("¿Seguro que quieres eliminar este usuario?")) return;
-  var boton = $(this);
-  var idUsuario = boton.data("id");
-  $.ajax({
-    type: "POST",
-    url: "./eUsuario.php",
-    data: { id_usuario: idUsuario },
-    success: function (response) {
-      if (response.includes("eliminado")) {
-        //podriamos usar boton.closest('.usuario-item').remove(); para que se eliminara automaticamente sin desvanecimiento pero queda mejor fadeOut
-        boton.closest(".usuario-item").fadeOut(300, function () {
-          $(this).remove();
-        });
+  //elimiar usuario
+  $(document).on("click", ".eliminar-usuario", function (e) {
+    e.preventDefault();
+    if (!confirm("¿Seguro que quieres eliminar este usuario?")) return;
+    var boton = $(this);
+    var idUsuario = boton.data("id");
+    $.ajax({
+      type: "POST",
+      url: "./eUsuario.php",
+      data: { id_usuario: idUsuario },
+      success: function (response) {
+        if (response.includes("eliminado")) {
+          //podriamos usar boton.closest('.usuario-item').remove(); para que se eliminara automaticamente sin desvanecimiento pero queda mejor fadeOut
+          boton.closest(".usuario-item").fadeOut(300, function () {
+            $(this).remove();
+          });
+          $("#divRespuesta").html(
+            '<div class="success-message">Usuario eliminado correctamente.</div>'
+          );
+        } else {
+          $("#divRespuesta").html(
+            '<div class="error-message">No se pudo eliminar el usuario.</div>'
+          );
+        }
+      },
+      error: function () {
         $("#divRespuesta").html(
-          '<div class="success-message">Usuario eliminado correctamente.</div>'
+          '<div class="error-message">Error al eliminar el usuario.</div>'
         );
-      } else {
-        $("#divRespuesta").html(
-          '<div class="error-message">No se pudo eliminar el usuario.</div>'
-        );
-      }
-    },
-    error: function () {
-      $("#divRespuesta").html(
-        '<div class="error-message">Error al eliminar el usuario.</div>'
-      );
-    },
+      },
+    });
   });
-});
 
-//eliminar receta
-$(document).on("click", ".eliminar-receta", function (e) {
-  e.preventDefault();
-  if (!confirm("¿Seguro que quieres eliminar esta receta?")) return;
-  var boton = $(this);
-  var idReceta = boton.data("id");
-  $.ajax({
-    type: "POST",
-    url: "./eReceta.php",
-    data: { id_receta: idReceta },
-    success: function (response) {
-      response = response.trim();
-      if (response === "eliminada") {
-        boton.closest(".receta-item").fadeOut(300, function () {
-          $(this).remove();
-        });
+  //eliminar receta
+  $(document).on("click", ".eliminar-receta", function (e) {
+    e.preventDefault();
+    if (!confirm("¿Seguro que quieres eliminar esta receta?")) return;
+    var boton = $(this);
+    var idReceta = boton.data("id");
+    $.ajax({
+      type: "POST",
+      url: "./eReceta.php",
+      data: { id_receta: idReceta },
+      success: function (response) {
+        response = response.trim();
+        if (response === "eliminada") {
+          boton.closest(".receta-item").fadeOut(300, function () {
+            $(this).remove();
+          });
+          $("#divRespuesta").html(
+            '<div class="success-message">Receta eliminada correctamente.</div>'
+          );
+        } else {
+          $("#divRespuesta").html(
+            '<div class="error-message">No se pudo eliminar la receta.</div>'
+          );
+        }
+      },
+      error: function () {
         $("#divRespuesta").html(
-          '<div class="success-message">Receta eliminada correctamente.</div>'
+          '<div class="error-message">Error al eliminar la receta.</div>'
         );
-      } else {
-        $("#divRespuesta").html(
-          '<div class="error-message">No se pudo eliminar la receta.</div>'
-        );
-      }
-    },
-    error: function () {
-      $("#divRespuesta").html(
-        '<div class="error-message">Error al eliminar la receta.</div>'
-      );
-    },
+      },
+    });
   });
-});
-// eliminar receta guardada
-$(document).on("click", ".eliminar-receta-guardada", function (e) {
-  e.preventDefault();
-  if (!confirm("¿Seguro que quieres eliminar esta receta guardada?")) return;
-  var boton = $(this);
-  var idReceta = boton.data("id");
-  var item = boton.closest(".filter-item");
+  // eliminar receta guardada
+  $(document).on("click", ".eliminar-receta-guardada", function (e) {
+    e.preventDefault();
+    if (!confirm("¿Seguro que quieres eliminar esta receta guardada?")) return;
+    var boton = $(this);
+    var idReceta = boton.data("id");
+    var item = boton.closest(".filter-item");
 
-  $.ajax({
-    type: "POST",
-    url: "./eRecetaGuardada.php",
-    data: { id: idReceta },
-    success: function (response) {
-      if (response.includes("eliminada")) {
-        item.fadeOut(300, function () {
-          $(this).remove();
-        });
-      } else {
-        alert("No se pudo eliminar la receta guardada.");
-      }
-    },
-    error: function () {
-      alert("Error al eliminar la receta guardada.");
-    },
+    $.ajax({
+      type: "POST",
+      url: "./eRecetaGuardada.php",
+      data: { id: idReceta },
+      success: function (response) {
+        if (response.includes("eliminada")) {
+          item.fadeOut(300, function () {
+            $(this).remove();
+          });
+        } else {
+          alert("No se pudo eliminar la receta guardada.");
+        }
+      },
+      error: function () {
+        alert("Error al eliminar la receta guardada.");
+      },
+    });
   });
 });
