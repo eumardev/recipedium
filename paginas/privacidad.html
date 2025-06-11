@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../JS/funciones.js" defer></script>
+    <script src="../JS/regex.js" defer></script>
+    <script src="../JS/ajax.js" defer></script>
+
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" media="(min-width: 768.1px) and (max-width: 991px)" href="../CSS/styles768To991.css">
+    <link rel="stylesheet" media="(max-width: 768px)" href="../CSS/stylesTo768.css">
+    <title>Recipedium - Noticias y Concursos</title>
+</head>
+
+<body>
+    <div class="container-fluid" id="contenedor">
+        <header class="headerbar">
+            <a class="" href="../index.html"><img src="../imagenes/logo_recipedium.svg" alt="Logo Recipedium"
+                    class="logo"></a>
+            <div class="titulo-container">
+                <h1 class="titulo">RECIPEDIUM</h1>
+                <h2 class="tagline">Tu recetario de cocina y mucho más</h2>
+            </div>
+            <div class="user-info">
+                <a href="/paginas/index.php" class="login" target="_blank"><img src="../imagenes/user_818842.png"
+                        alt="Inicio sesion/registro" class="login-icon">Iniciar sesión / Registrarse</a>
+            </div>
+        </header>
+        <nav class="navbar" id="nav">
+            <div class="menu-toggle" aria-label="Abrir menú" tabindex="0"><span></span></div>
+            <div class="nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            aria-expanded="false">Concursos</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./concursosAbiertos.html">Concursos abiertos</a></li>
+                            <li>
+                                <hr>
+                            </li>
+                            <li><a class="dropdown-item" href="./ganadores.html">Ganadores últimos concursos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                            aria-expanded="false">Referentes en el mundo de la cocina</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./referenteCocina1.html">Martín Berasategui</a></li>
+                            <li>
+                                <hr>
+                            </li>
+                            <li><a class="dropdown-item" href="./referenteCocina2.html">Ferrán Adriá</a></li>
+                            <li>
+                                <hr>
+                            </li>
+                            <li><a class="dropdown-item" href="./referenteCocina3.html">Ángel León </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                            aria-expanded="false">Eventos de cocina</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./eventosProximos.html">Próximos eventos</a></li>
+                            <li>
+                                <hr>
+                            </li>
+                            <li><a class="dropdown-item" href="./eventosPendientes.html">Eventos por confirmar</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="main-layout">
+            <aside id="sidebar" class="card">
+                <nav>
+                    <ul class="sidebar-list">
+                        <li><a href="#1">Datos identificativos</a>
+
+                        <li><a href="#1">Información al usuario</a></li>
+                        <li><a href="#2">Contacto</a></li>
+                        <li><a href="#3">Principios clave</a></li>
+                        <li><a href="#4">Recogida y tratamiento de datos personales</a></li>
+                        <li><a href="#5">Legitimidad</a></li>
+                        <li><a href="#6">Comunicación de datos personales</a></li>
+                        <li><a href="#7">Sus derechos</a></li>
+                        <li><a href="#8">Informacion legal</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <main>
+                <div id="principal">
+                    <section>
+                        <h2>POLITICA DE PRIVACIDAD</h2>
+
+                        <p>
+                            Última actualización: Enero 2023.</p>
+                        <p id="1">
+                            1. INFORMACIÓN AL USUARIO</p>
+                        <p>
+                            RECIPEDIUM S.L., como Responsable del Tratamiento, le informa que, según lo dispuesto en el
+                            Reglamento (UE)
+                            2016/679, de 27 de abril, (RGPD) y en la L.O. 3/2018, de 5 de diciembre, de protección de
+                            datos
+                            y garantía de los
+                            derechos digitales (LOPDGDD), trataremos su datos tal y como reflejamos en la presente
+                            Política
+                            de Privacidad.</p>
+                        <p>
+                            En esta Política de Privacidad describimos cómo recogemos sus datos personales y por qué los
+                            recogemos, qué
+                            hacemos con ellos, con quién los compartimos, cómo los protegemos y sus opciones en cuanto
+                            al
+                            tratamiento de sus
+                            datos personales.</p>
+                        <p>
+                            Esta Política se aplica al tratamiento de sus datos personales recogidos por la empresa para
+                            la
+                            prestación de sus
+                            servicios. Si acepta las medidas de esta Política, acepta que tratemos sus datos personales
+                            como
+                            se define en esta
+                            Política.</p>
+                        <p id="2">
+                            2. CONTACTO</p>
+                        <p>
+                            Denominación social: RECIPEDIUM S.L.
+                            Nombre comercial: RECIPEDIUM
+                            CIF: B-04858585
+                            Domicilio: SAN ISIDRO LABRADOR 30, 04720, ALMERÍA, ESPAÑA
+                            e-mail: recipedium@gmail.com</p>
+                        <p id="3">
+                            3. PRINCIPIOS CLAVE</p>
+                        <p>
+                            Siempre hemos estado comprometidos con prestar nuestros servicios con el más alto grado de
+                            calidad, lo que incluye
+                            tratar sus datos con seguridad y transparencia. Nuestros principios son:</p>
+                        <p>
+                            Legalidad: Solo recopilaremos sus Datos personales para fines específicos, explícitos y
+                            legítimos.
+                            Minimización de datos: Limitamos la recogida de datos de carácter personal a lo que es
+                            estrictamente relevante y
+                            necesario para los fines para los que se han recopilado.
+                            Limitación de la Finalidad: Solo recogeremos sus datos personales para los fines declarados
+                            y
+                            solo según sus
+                            deseos.</p>
+                        <p> Precisión: Mantendremos sus datos personales exactos y actualizados.
+                            Seguridad de los Datos: Aplicamos las medidas técnicas y organizativas adecuadas y
+                            proporcionales a los riesgos
+                            para garantizar que sus datos no sufran daños, tales como divulgación o acceso no
+                            autorizado, la
+                            destrucción
+                            accidental o ilícita o su pérdida accidental o alteración y cualquier otra forma de
+                            tratamiento
+                            ilícito.</p>
+                        <p> Acceso y Rectificación: Disponemos de medios para que acceda o rectifique sus datos cuando
+                            lo
+                            considere
+                            oportuno.</p>
+                        <p> Conservación: Conservamos sus datos personales de manera legal y apropiada y solo mientras
+                            es
+                            necesario para los
+                            fines para los que se han recopilado.</p>
+                        <p> Las transferencias internacionales: cuando se dé el caso de que sus datos vayan a ser
+                            transferidos fuera de la
+                            UE/EEE se protegerán adecuadamente.</p>
+                        <p> Terceros: El acceso y transferencia de datos personales a terceros se llevan a cabo de
+                            acuerdo
+                            con las leyes y
+                            reglamentos aplicables y con las garantías contractuales adecuadas.
+                            Marketing Directo y cookies: Cumplimos con la legislación aplicable en materia de publicidad
+                            y
+                            cookies.</p>
+                        <p id="4"> 4. RECOGIDA Y TRATAMIENTO DE SUS DATOS PERSONALES</p>
+                        <p>
+                            Las tipos de datos que se pueden solicitar y tratar son:
+
+                            Datos de carácter identificativo. También recogemos de forma automática datos sobre su
+                            visita a
+                            nuestro sitio web
+                            según se describe en la política de cookies.</p>
+                        <p>
+                            Siempre que solicitemos sus Datos personales, le informaremos con claridad de qué datos
+                            personales recogemos y con
+                            qué fin. En general, recogemos y tratamos sus datos personales con el propósito de:</p>
+                        <p>
+                            Proporcionar información, servicios, productos, información relevante y novedades en el
+                            sector.
+                            Envío de comunicaciones.</p>
+                        <p id="5">
+                            5. LEGITIMIDAD</p>
+                        <p>
+                            De acuerdo con la normativa de protección de datos aplicable, sus datos personales podrán
+                            tratarse siempre que:
+
+                            Nos ha dado su consentimiento a los efectos del tratamiento. Por supuesto podrá retirar su
+                            consentimiento en
+                            cualquier momento.</p>
+                        <p> Por requerimiento legal.
+                            Por exisitr un interés legítimo que no se vea menoscabado por sus derechos de privacidad,
+                            como
+                            por ejemplo el
+                            envío de información comercial bien por suscripción a nuestra newsletter o por su condición
+                            de
+                            cliente.
+                            Por se necesaria para la prestación de alguno de nuestros servicios mediante relación
+                            contractual entre usted y
+                            nosotros.</p>
+                        <p id="6">
+                            6. COMUNICACIÓN DE DATOS PERSONALES</p>
+                        <p>
+                            Los datos pueden ser comunicados a empresas relacionadas con TU EMPRESA, S.L. para la
+                            prestación
+                            de los diversos
+                            servicios en calidad de Encargados del Tratamiento. La empresa no realizará ninguna cesión,
+                            salvo por obligación
+                            legal.</p>
+                        <p id="7">
+                            7. SUS DERECHOS</p>
+                        <p>
+                            En relación con la recogida y tratamiento de sus datos personales, puede ponerse en contacto
+                            con
+                            nosotros en
+                            cualquier momento para:</p>
+                        <p>
+                            Acceder a sus datos personales y a cualquier otra información indicada en el Artículo 15.1
+                            del
+                            RGPD.
+                            Rectificar sus datos personales que sean inexactos o estén incompletos de acuerdo con el
+                            Artículo 16 del RGPD.
+                            Suprimir sus datos personales de acuerdo con el Artículo 17 del RGPD.</p>
+                        <p> Limitar el tratamiento de sus datos personales de acuerdo con el Artículo 18 del RGPD.
+                            Solicitar la portabilidad de sus datos de acuerdo con el Artículo 20 del RGPD.</p>
+                        <p>Oponerse al tratamiento de sus datos personales de acuerdo con el artículo 21 del RGPD.
+                            Si ha otorgado su consentimiento para alguna finalidad concreta, tiene derecho a retirar el
+                            consentimiento
+                            otorgado en cualquier momento, sin que ello afecte a la licitud del tratamiento basado en el
+                            consentimiento previo
+                            a su retirada rrhh.</p>
+
+                        <p> Puede ejercer estos derechos enviando comunicación, motivada y acreditada, a
+                            recipedium@gmail.com
+
+                            También tiene derecho a presentar una reclamación ante la Autoridad de control competente
+                            (www.aepd.es) si
+                            considera que el tratamiento no se ajusta a la normativa vigente.</p>
+                        <p id="8">
+                            8. INFORMACIÓN LEGAL</p>
+                        <p>
+                            Los requisitos de esta Política complementan, y no reemplazan, cualquier otro requisito
+                            existente bajo la ley de
+                            protección de datos aplicable, que será la que prevalezca en cualquier caso.</p>
+                        <p>
+                            Esta Política está sujeta a revisiones periódicas y la empresa puede modificarla en
+                            cualquier
+                            momento. Cuando esto
+                            ocurra, le avisaremos de cualquier cambio y le pediremos que vuelva a leer la versión más
+                            reciente de nuestra
+                            Política y que confirme su aceptación.
+                        </p>
+                    </section>
+                </div>
+            </main>
+        </div>
+        <footer id="footer" class="footer">
+            <div class="footer-left">
+                <div>
+                    <a href="#" class="footer-link">Política de privacidad</a>
+                </div>
+                <div>
+                    <a href="./información_legal.html" class="footer-link">Información legal</a>
+                </div>
+                <div>
+                    <a href="./faq.html" class="footer-link">FAQ´s</a>
+                </div>
+            </div>
+            <div class="footer-center">
+                &copy; 2025 Recipedium. Todos los derechos reservados.
+            </div>
+            <div class="footer-right">
+            <a href="https://www.youtube.com/@Recipedium" target="_blank"><img src="../imagenes/youtube.png"
+                    alt="Youtube" class="social-icon"></a>
+            <a href="https://wa.me/34605019788" target="_blank"><img src="../imagenes/whatsapp_4494495.png" alt="Whatsapp"
+                    class="social-icon"></a>
+            <a href="https://instagram.com/recipedium" target="_blank"><img src="../imagenes/instagram_4494489.png"
+                    alt="Instagram" class="social-icon"></a>
+        </div>
+        </footer>
+    </div>
+</body>
+
+</html>

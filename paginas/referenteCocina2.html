@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../JS/funciones.js" defer></script>
+    <script src="../JS/regex.js" defer></script>
+    <script src="../JS/ajax.js" defer></script>
+
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" media="(min-width: 768.1px) and (max-width: 991px)" href="../CSS/styles768To991.css">
+    <link rel="stylesheet" media="(max-width: 768px)" href="../CSS/stylesTo768.css">
+    <title>Recipedium - Concursos y Concursos</title>
+</head>
+
+<body>
+    <div class="container-fluid" id="contenedor">
+        <header class="headerbar">
+            <a class="" href="../index.html"><img src="../imagenes/logo_recipedium.svg" alt="Logo Recipedium"
+                    class="logo"></a>
+
+            <div class="titulo-container">
+                <h1 class="titulo">RECIPEDIUM</h1>
+                <h2 class="tagline">Tu recetario de cocina y mucho más</h2>
+            </div>
+            <div class="user-info">
+                <a href="./index.php" class="login" target="_blank"><img src="../imagenes/user_818842.png"
+                        alt="Inicio sesion/registro" class="login-icon">Iniciar sesión / Registrarse</a>
+            </div>
+        </header>
+        <nav class="navbar" id="nav">
+            <div class="menu-toggle" aria-label="Abrir menú" tabindex="0"><span></span></div>
+            <div class="nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            aria-expanded="false">Concursos</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./concursosAbiertos.html">Concursos abiertos</a></li>
+                            <li>
+                                <hr>
+                            </li>
+                            <li><a class="dropdown-item" href="./ganadores.html">Ganadores últimos concursos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                            aria-expanded="false">Referentes en el mundo de la cocina</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./referenteCocina1.html">Martín Berasategui</a></li>
+                            <li>
+                                <hr>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Ferrán Adriá</a></li>
+                            <li>
+                                <hr>
+                            </li>
+                            <li><a class="dropdown-item" href="./referenteCocina3.html">Ángel León </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                            aria-expanded="false">Eventos de cocina</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./eventosProximos.html">Próximos eventos</a></li>
+                            <li>
+                                <hr>
+                            </li>
+                            <li><a class="dropdown-item" href="./eventosPendientes.html">Eventos pasados</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="main-layout">
+            <aside id="sidebar" class="card">
+                <nav>
+                    <ul class="sidebar-list">
+                        <li><a href="#biografía">Biografía</a></li>
+                        <li><a href="#estrellas">Estrellas Michelín<noscript></noscript></a></li>
+                        <li><a href="#restaurantes">Restaurantes</a></li>
+                        <!-- <li><a href="#Concurso4">Concurso 4</a></li> -->
+                    </ul>
+                </nav>
+            </aside>
+            <main>
+                <div id="principal">
+                    <section>
+                        <article class="card" id="Concurso1">
+                            <header>
+                                <h2>Biografía </h2>
+                            </header>
+                            <p>Ferran Adrià Acosta, nació el 14 de mayo de 1962 en L’Hospitalet de Llobregat, Barcelona (España), y realizó sus estudios básicos en Barcelona donde vivía con sus padres, Ginés y Josefa, y su hermano Albert. Su pasión era el fútbol, y su relación con la cocina fue casi nula en esta etapa, lo normal en un niño de su edad.</p>
+
+                            <p>En 1977 ingresó en el Instituto Politécnico de la Merced para cursar estudios administrativos, el paso previo para la carrera de Ciencias empresariales.
+
+En 1980 da un giro personal e inicia un período en el que deja atrás sus estudios y se introduce progresivamente en el mundo profesional de la cocina, empezando como lavaplatos en el hotel Playafels y terminando en el equipo de cocina del Almirante durante el cumplimiento del servicio militar entre 1982 y 1983, lo cual le permitió adquirir experiencia a la hora de asumir responsabilidades, ya que por primera vez él era el encargado de una cocina.
+
+Siguiendo la sugerencia de otro recluta catalán que trabajaba en elBulli, Fermí Puig, en verano de 1983 pasó su mes de permiso en el restaurante de Cala Montjoi. Al acabar este stage, y puesto que la experiencia había sido satisfactoria, Ferran apalabró su ingreso en plantilla en cuanto terminase el servicio militar.</p>
+
+                            <p>En abril de 1984 entró a formar parte de elBulli como jefe de partida, hasta que el 1 de noviembre, tras la marcha del chef Jean-Paul Vinay, el director, Juli Soler, les nombró a él y a Christian Lutaud jefes de cocina en tándem.</p>
+
+<p>En octubre de 1986, tras la marcha de Christian Lutaud, Ferran Adrià se convirtió en chef único de elBulli.</p>
+
+<p>Junto a él y a Juli Soler, Albert Adrià, que se había incorporado al equipo en 1985, completó la tripleta de líderes sin los cuales no sería posible comprender el legado de elBullirestaurante.</p>
+
+<p>A partir de 1987, Ferran dejó de lado el recetario de la Nouvelle Cuisine, el movimiento que por entonces marcaba la línea a seguir a nivel creativo, y propuso su propia manera de entender la cocina.</p>  
+
+<p>En 1990 nació Restaurante elBulli S.L., una sociedad formada por Juli Soler y Ferran Adrià, en la que desarrollaron un modelo de negocio basado en un pequeño grupo empresarial con diferentes líneas de actuación: consultorías y asesorías con empresas de la industria alimentaria, hotelería y restauración, una editorial propia y una empresa de catering, entre otros proyectos. Este modelo estableció una nueva misión para elBullirestaurante, el cual se convirtió en el departamento de I+D y de marketing de esta galaxia de proyectos, aunque siempre se antepuso al negocio su apuesta por la vanguardia. La radicalidad de elBulli se mantuvo gracias a este modelo.</p>
+
+<p>Desde principios de los noventa se empezó a producir un cambio en la cocina de Ferran y elBullirestaurante, y junto a los platos «mediterráneos», comenzaron a aparecer una serie de conceptos, elaboraciones, técnicas y formatos de servicio nuevos que allanaron el camino del cambio el cual, de forma incontestable, se produjo en 1994, desarrollando un estilo de cocina propio que cambió el paradigma de la gastronomía y fue la génesis del movimiento tecno-emocional.</p>
+
+<p>En el año 2000 se creó elBullitaller, en la calle Portaferrissa de Barcelona, donde se concentraba el trabajo creativo en los meses de cierre del restaurante y se estableció un modelo de creatividad que poco a poco se fue perfeccionado. Además, todas las variables y recursos del proceso se sometían a una auditoría creativa que proporcionaba un elevado nivel de eficiencia y eficacia. Esto ha sido lo que, al fin y al cabo, ha determinado la longevidad creativa de elBulli.</p>
+
+<p> Desde 2002, Ferran está casado con Isabel Pérez y no tiene hijos.</p>
+
+                            <div class="cont_img">
+                                <img src="" class="img_evento" alt="">
+                            </div>
+                        </article>
+                        <article class="card" id="estrellas">
+                            <header>
+                                <h2>Estrellas Michelín</h2>
+                            </header>
+                            <p>
+                                Ferran Adrià tiene 3 estrellas Michelin por su restaurante ElBulli. </p>
+                             
+                            <div class="cont_img">
+                                <img src="" class="img_evento" alt="">
+                            </div>
+                        </article>
+                        <article class="card" id="restaurantes">
+                            <header>
+                                <h2>Restaurantes</h2>
+                            </header>
+                            <p>Ferran Adrià tiene un restaurante llamado El Bulli, que fue reconocido como uno de los mejores del mundo. El Bulli cerró sus puertas como restaurante en 2011, pero fue transformado en elBullifoundation, un centro de investigación y aprendizaje.</p>
+                            <p>Además, Ferran Adrià está involucrado en el restaurante Enigma, propiedad de su hermano Albert Adrià.</p>
+                            <p>También hay un restaurante llamado Sublimotion, diseñado con la colaboración de Ferran Adrià, pero dirigido por el chef Paco Rincón.</p>
+                       
+                            <!-- <div class="cont_img">
+                                <img src="" class="img_evento" alt="">
+                            </div> -->
+                        </article>
+                        <!-- <article class="card" id="Concurso4">
+                            <header>
+                                <h2>Concurso 4</h2>
+                            </header>
+                            <p> -->
+                        <!-- Contenido de la Concurso 4 -->
+                        <!-- </p>
+                            <div class="cont_img">
+                                <img src="" class="img_evento" alt="">
+                            </div>
+                        </article>  -->
+                    </section>
+                </div>
+            </main>
+        </div>
+        <footer id="footer" class="footer">
+            <div class="footer-left">
+                <div>
+                    <a href="/paginas/privacidad.html" class="footer-link">Política de privacidad</a>
+                </div>
+                <div>
+                    <a href="/paginas/información_legal.html" class="footer-link">Información legal</a>
+                </div>
+                <div>
+                    <a href="/paginas/faq.html" class="footer-link">FAQ´s</a>
+                </div>
+                <!-- <div>
+                    <a href="#" class="footer-link">Contacto</a>
+                </div> -->
+            </div>
+            <div class="footer-center">
+                &copy; 2025 Recipedium. Todos los derechos reservados.
+            </div>
+            <div class="footer-right">
+            <a href="https://www.youtube.com/@Recipedium" target="_blank"><img src="../imagenes/youtube.png"
+                    alt="Youtube" class="social-icon"></a>
+            <a href="https://wa.me/34605019788" target="_blank"><img src="../imagenes/whatsapp_4494495.png" alt="Whatsapp"
+                    class="social-icon"></a>
+            <a href="https://instagram.com/recipedium" target="_blank"><img src="../imagenes/instagram_4494489.png"
+                    alt="Instagram" class="social-icon"></a>
+        </div>
+        </footer>
+    </div>
+</body>
+
+</html>

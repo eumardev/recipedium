@@ -1,0 +1,781 @@
+/* Reset y globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid orange; */
+}
+
+/*declaración de tipo de fuente específico*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Enlace de login/registro en el header */
+.login {
+  background: rgba(233, 221, 175, 1);
+  color: #2c3e50;
+  border: 1px solid #a9c4d8;
+  border-radius: 4px;
+  padding: 0.3em 0.9em 0.3em 0.7em;
+  margin-left: 1vw;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.98rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  box-shadow: 0 1px 4px rgba(41, 60, 85, 0.04);
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.login:hover,
+.login:focus {
+  background: rgba(120, 103, 33, 1);
+  color: #fff;
+  border-color: #fff;
+  text-decoration: none;
+}
+
+.login-icon {
+  width: clamp(1.5rem, 1.2rem + 1vw, 2.2rem);
+  height: clamp(1.5rem, 1.2rem + 1vw, 2.2rem);
+  min-width: 24px;
+  min-height: 24px;
+  max-width: 36px;
+  max-height: 36px;
+  object-fit: contain;
+  vertical-align: middle;
+  transition: transform 0.2s;
+}
+.login:hover .login-icon {
+  transform: scale(1.08);
+}
+
+/* Aside lateral izquierdo */
+#sidebar {
+  width: 220px;
+  min-width: 180px;
+  max-width: 250px;
+  margin-top: 4vh;
+  margin-right: 2vw;
+  height: auto;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  background: rgba(233, 221, 175, 1);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  padding: 1em 0.5em;
+  z-index: 100;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
+}
+#sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#sidebar nav ul li {
+  margin-bottom: 0.7em;
+}
+#sidebar nav ul li a {
+  color: #2c3e50;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.4em 0.8em;
+  border-radius: 4px;
+  display: block;
+  transition: background 0.2s, color 0.2s;
+}
+#sidebar nav ul li a:hover {
+  background: rgba(120, 103, 33, 1);
+  color: #fff;
+}
+
+/* Layout principal: aside + main */
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 80vh;
+  gap: 1.5vh;
+  background-color: #ecf1f6;
+  padding-bottom: 11vh; /* Para que el fondo llegue hasta el footer fijo */
+}
+.main-layout main {
+  flex: 4 1 0;
+  width: 80%;
+  /* min-width: 0; */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 11vh; /*esto solo lo aplico si decido usar el footer fijo en pie de pantalla*/
+}
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background-color: #f4f4f4;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5vh; /*esto solo lo aplico si decido usar el footer fijo en pie de pantalla*/
+}
+#principal {
+  min-height: calc(
+    100vh - 8vh - 120px
+  ); /* Ajusta 120px al alto real de tu header+nav */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5vh; /* Menos espacio vertical */
+  padding: 3vh 0;
+  background-color: #ecf1f6;
+  padding-bottom: 11vh; /* esto para que el footer no tape el final del main */
+}
+
+/* Contenedores principales */
+.container-fluid {
+  width: 90vw; /* Ahora ocupa el 90% */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1vw;
+}
+
+/* Centrar y ajustar ancho de las imágenes de noticia y su contenedor */
+.cont_img {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img_noticia {
+  display: block;
+  width: 90%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  max-width: 250px;
+}
+
+/* Tarjetas de usuario, receta y notificación */
+.card,
+.usuario-item,
+.receta-item,
+.notificacion-item {
+  background-color: rgba(233, 221, 175, 1);
+  padding: 1.2vw;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90vw; /* Ahora ocupa el 90% */
+  max-width: 600px;
+  min-width: 220px;
+  margin: 1.2vh auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2vh; /* Menos espacio vertical */
+}
+
+/* Listas */
+#user-list,
+#recetas-list,
+#notificaciones-list,
+.notificaciones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2vh; /* Menos espacio vertical */
+  align-items: center;
+  width: 100%;
+}
+
+/* Títulos */
+.receta-item .receta-titulo,
+#notificacion-mensaje,
+.usuario-item .userName {
+  background-color: #2c3e50;
+  text-align: center;
+  width: 100%;
+  margin-top: 0.5vh;
+  padding: 0.7vh 0.5vw;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  color: #e9ddaf;
+}
+
+/* Botones y enlaces principales */
+.btn,
+.btn:visited,
+.btn:active,
+a.btn,
+button.btn {
+  background-color: rgba(85, 68, 0, 1);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.8em 0;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: block;
+  width: 100%;
+  margin: 0.5vh 0 0 0; /* Menos margen superior */
+  box-sizing: border-box;
+}
+.btn:hover,
+.btn:focus,
+a.btn:hover,
+a.btn:focus,
+button.btn:hover,
+button.btn:focus {
+  background-color: #2c3e50;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+button.btn {
+  border: none;
+  background: none;
+  background-color: rgba(85, 68, 0, 1);
+  box-shadow: none;
+}
+
+/* Formularios */
+.form-container,
+.form-section {
+  background-color: rgba(233, 221, 175, 1);
+  padding: 1.2vw;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90vw;
+  max-width: 600px;
+  margin: 1.2vh auto;
+}
+
+.main-index {
+  padding-bottom: 8vh; /* para dejar que main deje espacio para el footer fijo */
+}
+
+.form-group {
+  margin-bottom: 0.8em;
+}
+.form-group label,
+.form-section label {
+  display: block;
+  margin-bottom: 0.3em;
+  color: rgba(85, 68, 0, 1);
+}
+
+.form-control,
+.form-section input[type="text"],
+.form-section input[type="password"],
+.form-section input[type="submit"],
+.form-section button {
+  width: 100%;
+  padding: 0.6em;
+  margin: 0.3em 0;
+  border: 1px solid rgba(85, 68, 0, 1);
+  border-radius: 4px;
+  background-color: #fff;
+  color: rgba(85, 68, 0, 1);
+  font-size: 1rem;
+}
+.form-section input[type="submit"],
+.form-section button {
+  background-color: rgba(85, 68, 0, 1);
+  color: #fff;
+  cursor: pointer;
+}
+.form-section input[type="submit"]:hover,
+.form-section button:hover {
+  background-color: rgba(120, 103, 33, 1);
+}
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+.checkbox-container input {
+  margin-left: 1em;
+}
+.error-message,
+.error {
+  color: #dc3545;
+  margin-top: 0.5em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+/* Receta: imagen y datos */
+.receta-item .receta-contenido {
+  display: flex;
+  gap: 1vw;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.receta-item .receta-imagen {
+  flex: 0 0 35%;
+  max-width: 250px;
+  margin: 0;
+}
+.receta-item .receta-imagen img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+.receta-item .receta-data {
+  flex: 0 0 60%;
+  max-width: 60%;
+  color: #554400;
+}
+.receta-item .receta-detalles p {
+  margin: 0.3em 0;
+  color: #554400;
+}
+
+/* Acciones de receta */
+.receta-item .receta-acciones {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vh;
+  align-items: stretch;
+}
+.receta-item .receta-acciones .btn {
+  margin: 0;
+}
+
+/* Footer comportamiento normal al final de la pagina */
+/* .footer {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 1em 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: auto;
+} */
+
+/*estilos de footer fijo en pie de pantalla*/
+.footer {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  width: 90vw;
+  max-width: 1200px;
+  transform: translateX(-50%);
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 1em 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  text-align: center;
+  box-sizing: border-box;
+  z-index: 999;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1vw;
+  padding: 0.5em;
+  font-size: 1rem;
+}
+.footer a:hover {
+  background-color: rgba(120, 103, 33, 1);
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+}
+.footer-left,
+.footer-center,
+.footer-right {
+  flex: 1;
+  text-align: center;
+}
+.footer-left {
+  text-align: left;
+}
+.footer-right {
+  text-align: right;
+}
+
+/* Iconos responsivos */
+.social-icon {
+  width: clamp(1.5rem, 1.2rem + 1vw, 2.2rem);
+  height: clamp(1.5rem, 1.2rem + 1vw, 2.2rem);
+  margin: 0 0.5em;
+  display: inline-block;
+  vertical-align: middle;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+.footer a:hover .social-icon {
+  transform: scale(1.12);
+}
+
+/* Navegación */
+.navbar {
+  background-color: #a9c4d8;
+  color: #554400;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.headerbar {
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 1em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  width: 90vw;
+  max-width: 1200px;
+  position: relative;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.logo {
+  width: 10vw;
+  min-width: 60px;
+  max-width: 150px;
+  height: auto;
+  font-weight: bold;
+  color: #fff;
+}
+
+.headerbar h1,
+.headerbar h2 {
+  /* margin-top: 1vw auto; */
+  margin: 0 auto;
+  text-align: center;
+  flex: 1 1 100%;
+  color: #e9ddaf;
+}
+
+.titulo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.titulo {
+  margin: 0;
+  color: #e9ddaf;
+  text-align: center;
+}
+
+.tagline {
+  text-align: center;
+  margin: 0 auto 0.5em auto;
+  color: #e9ddaf;
+  font-size: clamp(0.9rem, 0.8rem + 0.7vw, 1.3rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  max-width: 90vw;
+  display: block;
+}
+.headerbar .user-info {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  margin-right: 2vw;
+}
+.headerbar .user-info .username {
+  font-size: 1rem;
+  margin-right: 3vw;
+  color: #e9ddaf;
+}
+.headerbar .user-info .logout {
+  color: #fff;
+  text-decoration: none;
+  background-color: #dc3545;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+}
+.headerbar .user-info .logout:hover {
+  background-color: #c82333;
+}
+
+.logout-icon {
+  width: clamp(1.5rem, 1.2rem + 1vw, 2.2rem);
+  height: clamp(1.5rem, 1.2rem + 1vw, 2.2rem);
+  min-width: 24px;
+  min-height: 24px;
+  max-width: 36px;
+  max-height: 36px;
+  object-fit: contain;
+  vertical-align: middle;
+  transition: transform 0.2s;
+  margin-left: 1vw; /* Espacio entre el nombre y el icono */
+}
+.navbar-nav {
+  display: flex;
+  gap: 5vw;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.nav-item {
+  position: relative;
+}
+.nav-link {
+  font-size: 1rem;
+  color: #554400;
+  text-decoration: none;
+  padding: 0.5em;
+}
+
+.nav-item:focus-within .dropdown-menu,
+.nav-item:hover .dropdown-menu {
+  display: block;
+}
+.nav-link:hover {
+  background-color: rgba(120, 103, 33, 1);
+  border-radius: 4px;
+  color: #fff;
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 1000;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.dropdown-menu.show {
+  display: block;
+}
+.dropdown-item {
+  font-size: 1rem;
+  display: block;
+  padding: 1em 2vw;
+  background-color: rgba(233, 221, 175, 1);
+  color: #333;
+  text-decoration: none;
+}
+.dropdown-item:hover {
+  background-color: rgba(120, 103, 33, 1);
+  color: #fff;
+}
+.nav-item:focus-within .dropdown-menu,
+.nav-item:hover .dropdown-menu {
+  display: block;
+}
+.navbar-nav .dropdown-menu {
+  min-width: 200px;
+  left: auto;
+  right: 0;
+}
+
+/* Otros */
+.negrita {
+  font-weight: bold;
+}
+p {
+  margin: 0.5em 0 0 0;
+} /* Menos margen superior */
+a {
+  color: #2c3e50;
+  text-decoration: none;
+}
+a:hover {
+  color: rgba(120, 103, 33, 1);
+  text-decoration: none;
+}
+/* h2 {
+  text-align: center;
+} */
+.search-container {
+  margin-bottom: 1vh;
+}
+.search-container input {
+  width: 100%;
+  padding: 0.7em;
+  border: 1px solid rgba(85, 68, 0, 1);
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: rgba(85, 68, 0, 1);
+}
+.card-body {
+  padding: 1vw;
+}
+
+/* Tipografía responsiva para textos principales */
+
+h1 {
+  font-size: clamp(1rem, 1.1rem + 2vw, 2.5rem);
+  font-weight: bold;
+  margin-bottom: 1vh;
+  text-align: center;
+}
+h2 {
+  font-size: clamp(0.95rem, 1rem + 1vw, 2rem);
+  font-weight: bold;
+  margin-bottom: 1vh;
+  text-align: center;
+}
+h3 {
+  font-size: clamp(0.95rem, 0.9rem + 0.7vw, 1.5rem);
+  font-weight: bold;
+  margin-bottom: 0.7vh;
+}
+p {
+  font-size: clamp(0.625rem, 0.8rem + 0.5vw, 1.2rem);
+  line-height: 1.5;
+  margin: 0.3em 0 0 0;
+}
+a {
+  font-size: clamp(0.625rem, 0.8rem + 0.5vw, 1.2rem);
+  text-align: left;
+  text-decoration: none;
+  color: #2c3e50;
+  transition: color 0.2s;
+}
+a:hover {
+  color: rgba(120, 103, 33, 1);
+  text-decoration: underline;
+}
+li {
+  font-size: clamp(0.95rem, 0.8rem + 0.5vw, 1.2rem);
+  line-height: 1.5;
+}
+label {
+  font-size: clamp(0.9rem, 0.7rem + 0.5vw, 1.1rem);
+}
+input,
+button,
+textarea,
+select {
+  font-size: clamp(0.95rem, 0.8rem + 0.5vw, 1.2rem);
+}
+
+/* FAQ - Estilos para preguntas y respuestas */
+
+.question {
+  cursor: pointer;
+  background: #e9ddaf;
+  color: #2c3e50;
+  padding: 1em 1.5em;
+  margin: 1em 0 0 0;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 1px 4px rgba(41, 60, 85, 0.07);
+  transition: background 0.2s, color 0.2s;
+}
+
+.question:hover,
+.question:focus {
+  background: #cfc08a;
+  color: #554400;
+}
+
+.answer {
+  display: none;
+  background: #fffbe6;
+  color: #554400;
+  padding: 1em 2em;
+  border-left: 4px solid #e9ddaf;
+  border-radius: 0 0 6px 6px;
+  margin-bottom: 1em;
+  box-shadow: 0 1px 4px rgba(41, 60, 85, 0.04);
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+/* Mejora para el contenedor FAQ */
+#preguntas h3 {
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+  color: #554400;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+/* Estilos para faq.html */
+.faq-item {
+  background: #e9ddaf;
+  border-radius: 6px;
+  margin: 1em 0;
+  box-shadow: 0 1px 4px rgba(41, 60, 85, 0.07);
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.faq-item .question,
+.faq-item .answer {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 1em 1.5em;
+}
+
+.faq-item .question {
+  cursor: pointer;
+  background: transparent;
+  color: #2c3e50;
+  font-weight: bold;
+  border-radius: 0;
+  box-shadow: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.faq-item .question:hover,
+.faq-item .question:focus {
+  background: #cfc08a;
+  color: #554400;
+}
+
+.faq-item .answer {
+  display: none;
+  background: #fffbe6;
+  color: #554400;
+  border-radius: 0 0 6px 6px;
+  box-shadow: none;
+  transition: all 0.3s;
+}
+
+.listas-html {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2vh; /* Menos espacio vertical */
+  align-items: flex-start;
+  width: 100%;
+  margin-left: 2em;
+}

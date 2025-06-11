@@ -1,0 +1,48 @@
+services:
+  apache:
+    image: php:8.1-apache
+    container_name: apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      - recipedium-network
+    command: /bin/bash -c "apt-get update && apt-get install -y libpq-dev && docker-php-ext-install mysqli pdo_mysql && apache2-foreground"
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_recipedium
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: recipedium
+      MYSQL_USER: sara
+      MYSQL_PASSWORD: 1234
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - recipedium-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql_recipedium
+      PMA_USER: sara
+      PMA_PASSWORD: 1234
+    depends_on:
+      - mysql
+    networks:
+      - recipedium-network
+
+volumes:
+  mysql-data:
+
+networks:
+  recipedium-network:
