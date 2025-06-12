@@ -7,7 +7,7 @@ $id_usuario = $datosusuario['id_usuario']; //para poder usar el id en la aplicac
 
 <div class="headerbar">
     <a class="" href="./app.php">
-        <img src="../imagenes/logo_Recipedium.svg" class="logo" alt="logotipo Recipedium" />
+        <img src="../imagenes/logo_recipedium.svg" class="logo" alt="logotipo Recipedium" />
     </a>
     <div class="titulo-container">
     <h1 class="titulo">RECIPEDIUM</h1>
