@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../JS/funciones.js" defer></script>
+    <script src="../JS/regex.js" defer></script>
+    <script src="../JS/ajax.js" defer></script>
+
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" media="(min-width: 768.1px) and (max-width: 991px)" href="../CSS/styles768To991.css">
+    <link rel="stylesheet" media="(max-width: 768px)" href="../CSS/stylesTo768.css">
+    <title>Recipedium - Concursos y Concursos</title>
+</head>
+
+<body>
+    <div class="container-fluid" id="contenedor">
+        <header class="headerbar">
+            <a class="" href="../index.html"><img src="../imagenes/logo_recipedium.svg" alt="Logo Recipedium"
+                    class="logo"></a>
+
+            <div class="titulo-container">
+                <h1 class="titulo">RECIPEDIUM</h1>
+                <h2 class="tagline">Tu recetario de cocina y mucho más</h2>
+            </div>
+            <div class="user-info">
+                <a href="./index.php" class="login" target="_blank"><img src="../imagenes/user_818842.png"
+                        alt="Inicio sesion/registro" class="login-icon">Iniciar sesión / Registrarse</a>
+            </div>
+        </header>
+        <nav class="navbar" id="nav">
+            <div class="menu-toggle" aria-label="Abrir menú" tabindex="0"><span></span></div>
+            <div class="nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            aria-expanded="false">Concursos</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./concursosAbiertos.html">Concursos abiertos</a></li>
+                            <li>
+                                <hr>
+                            </li>
+                            <li><a class="dropdown-item" href="./ganadores.html">Ganadores últimos concursos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                            aria-expanded="false">Referentes en el mundo de la cocina</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Martín Berasategui</a></li>
+                            <li>
+                                <hr>
+                            </li>
+                            <li><a class="dropdown-item" href="./referenteCocina2.html">Ferrán Adriá</a></li>
+                            <li>
+                                <hr>
+                            </li>
+                            <li><a class="dropdown-item" href="./referenteCocina3.html">Ángel León </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                            aria-expanded="false">Eventos de cocina</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./eventosProximos.html">Próximos eventos</a></li>
+                            <li>
+                                <hr>
+                            </li>
+                            <li><a class="dropdown-item" href="./eventosPendientes.html">Eventos pasados</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="main-layout">
+            <aside id="sidebar" class="card">
+                <nav>
+                    <ul class="sidebar-list">
+                        <li><a href="#biografía">Biografía</a></li>
+                        <li><a href="#estrellas">Estrellas Michelín<noscript></noscript></a></li>
+                        <li><a href="#restaurantes">Restaurantes</a></li>
+                        <!-- <li><a href="#Concurso4">Concurso 4</a></li> -->
+                    </ul>
+                </nav>
+            </aside>
+            <main>
+                <div id="principal">
+                    <section>
+                        <article class="card" id="Concurso1">
+                            <header>
+                                <h2>Biografía </h2>
+                            </header>
+                            <p>Martín Berasategui nace en 1960 en San Sebastián. Su formación como cocinero y gran parte
+                                de su vida se relacionan con el Bodegón Alejandro, popular casa de comidas regentada por
+                                sus padres y su tía, situada en la parte vieja de San Sebastián, en el que obtuvo su
+                                primera Estrella Michelin.</p>
+
+                            <p>Entre los 15 y los 27 años Martín visita Francia en sus días libres para formarse y
+                                adquirir conocimientos. En Bayona aprende con Jean Paul Heinard y en Anglet con André
+                                Mandion. En la charcutería ahonda de la mano de François Brouchican en la Villa de
+                                Ustariz y en la cocina con Bernard Lacarrau en el pueblo de Labatut. Pero, sobre todo,
+                                sería con Didier Oudill, profesional portentoso, primer jefe de cocina en el glamoroso
+                                balneario Les Prés D’Eugénie junto a Michel Guerard con quien toma contacto con la alta
+                                cocina. Y luego después con Alain Ducasse, en el restaurante Louis XV de Mónaco.</p>
+
+                            <p>El prestigio de Martín Berasategui, el cocinero español con más Estrellas Michelin en
+                                territorio nacional y tercero a nivel mundial, despega de manera vertiginosa el 1 de
+                                mayo de 1993 al inaugurar junto a su mujer, Oneka Arregui, el Restaurante Martín
+                                Berasategui en Lasarte-Oria, a 7 Km de San Sebastián.</p>
+
+                            <div class="cont_img">
+                                <img src="" class="img_evento" alt="">
+                            </div>
+                        </article>
+                        <article class="card" id="estrellas">
+                            <header>
+                                <h2>Estrellas Michelín</h2>
+                            </header>
+                            <p>
+                                Martín Berasategui, en total, tiene 12 estrellas Michelin. De ellas, 3 están en su
+                                restaurante homónimo en Lasarte-Oria. En Barcelona, su restaurante Lasarte también tiene 3 estrellas. </p>
+                                <p>Además, tiene 2 en el restaurante M.B. de Tenerife. También tiene un restaurante con una estrella en Bilbao, Ola Martín Berasategui, y otro en Barcelona, Oria. Finalmente, cuenta con un restaurante más con una estrella en Ibiza, Etxeko. </p>
+                                <p>Con estas 11 estrellas, Berasategui es uno de los chefs con más reconocimientos a nivel
+                                mundial
+                            </p>
+                            <div class="cont_img">
+                                <img src="" class="img_evento" alt="">
+                            </div>
+                        </article>
+                        <article class="card" id="restaurantes">
+                            <header>
+                                <h2>Restaurantes</h2>
+                            </header>
+                            <ul class="listas-html">
+                                <li>Restaurante Martín Berasategui (Lasarte-Oria)</li>
+                                <li>Restaurante Lasarte (Barcelona)</li>
+                                <li>Restaurante Oria (Barcelona)</li>
+                                <li>Restaurante M.B. (Tenerife)</li>
+                                <li>Ola Martín Berasategui (Bilbao)</li>
+                                <li>Gastrobodega Yllera (Rueda, Valladolid)</li>
+                                <li>Fonda España (Barcelona)</li>
+                                <li>Jara by Martín Berasategui (Dubai)</li>
+                                <li>Melvin by Martín Berasategui (Tenerife)</li>
+                                <li>Txoko MB (Tenerife)</li> 
+                            </ul>
+                            <p>Además, Berasategui también ha colaborado en otros proyectos gastronómicos, como la dirección culinaria de Restaurante Etxeko en Ibiza, que no está directamente gestionado por él, pero cuenta con su sello.</p>
+                            <!-- <div class="cont_img">
+                                <img src="" class="img_evento" alt="">
+                            </div> -->
+                        </article>
+                        <!-- <article class="card" id="Concurso4">
+                            <header>
+                                <h2>Concurso 4</h2>
+                            </header>
+                            <p> -->
+                        <!-- Contenido de la Concurso 4 -->
+                        <!-- </p>
+                            <div class="cont_img">
+                                <img src="" class="img_evento" alt="">
+                            </div>
+                        </article>  -->
+                    </section>
+                </div>
+            </main>
+        </div>
+        <footer id="footer" class="footer">
+            <div class="footer-left">
+                <div>
+                    <a href="/paginas/privacidad.html" class="footer-link">Política de privacidad</a>
+                </div>
+                <div>
+                    <a href="/paginas/información_legal.html" class="footer-link">Información legal</a>
+                </div>
+                <div>
+                    <a href="/paginas/faq.html" class="footer-link">FAQ´s</a>
+                </div>
+                <!-- <div>
+                    <a href="#" class="footer-link">Contacto</a>
+                </div> -->
+            </div>
+            <div class="footer-center">
+                &copy; 2025 Recipedium. Todos los derechos reservados.
+            </div>
+            <div class="footer-right">
+            <a href="https://www.youtube.com/@Recipedium" target="_blank"><img src="../imagenes/youtube.png"
+                    alt="Youtube" class="social-icon"></a>
+            <a href="https://wa.me/34605019788" target="_blank"><img src="../imagenes/whatsapp_4494495.png" alt="Whatsapp"
+                    class="social-icon"></a>
+            <a href="https://instagram.com/recipedium" target="_blank"><img src="../imagenes/instagram_4494489.png"
+                    alt="Instagram" class="social-icon"></a>
+        </div>
+        </footer>
+    </div>
+</body>
+
+</html>
