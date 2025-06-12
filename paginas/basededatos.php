@@ -56,22 +56,22 @@ class basededatos
 
     // Verificar si ya existe un usuario con ese nombre
     public function usuarioRegistrado($datos)
-{
-    $datos = unserialize($datos);
-    $user = $datos[1];
-    $dni = $datos[2];
-    $email = $datos[3];
+    {
+        $datos = unserialize($datos);
+        $user = $datos[1];
+        $dni = $datos[2];
+        $email = $datos[3];
 
-    $sql = "SELECT COUNT(*) FROM usuarios WHERE nombre = :user OR email = :email OR DNI = :dni";
-    $resultado = $this->conn->prepare($sql);
-    $resultado->bindParam(':user', $user);
-    $resultado->bindParam(':email', $email);
-    $resultado->bindParam(':dni', $dni);
-    $resultado->execute();
-    $existeUsu = $resultado->fetchColumn();
+        $sql = "SELECT COUNT(*) FROM usuarios WHERE nombre = :user OR email = :email OR DNI = :dni";
+        $resultado = $this->conn->prepare($sql);
+        $resultado->bindParam(':user', $user);
+        $resultado->bindParam(':email', $email);
+        $resultado->bindParam(':dni', $dni);
+        $resultado->execute();
+        $existeUsu = $resultado->fetchColumn();
 
-    return $existeUsu > 0; // Devuelve true si el usuario existe, false si no
-}
+        return $existeUsu > 0; // Devuelve true si el usuario existe, false si no
+    }
 
     // método para establecer un nuevo usuario
     public function setUsuario($datos)
@@ -107,13 +107,13 @@ class basededatos
     }
 
     public function getUsuarioPorNombre($nombre)
-{
-    $sql = 'SELECT * FROM usuarios WHERE nombre = :nombre';
-    $resultado = $this->conn->prepare($sql);
-    $resultado->execute(['nombre' => $nombre]);
-    $datos = $resultado->fetch(PDO::FETCH_ASSOC);
-    return $datos;
-}
+    {
+        $sql = 'SELECT * FROM usuarios WHERE nombre = :nombre';
+        $resultado = $this->conn->prepare($sql);
+        $resultado->execute(['nombre' => $nombre]);
+        $datos = $resultado->fetch(PDO::FETCH_ASSOC);
+        return $datos;
+    }
 
     // método para actualizar los datos de un usuario cuyo id coincida con el recibido en el array serializado
     public function updateUsuario($datos)
@@ -144,19 +144,19 @@ class basededatos
         $resultado->execute(array(0, $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7], $datos[8]));
         $this->conn->commit();
     }
-// método para ver las recetas de un usuario cuyo id coincida con el recibido por parámetro
-public function getRecetasPorUsuario($id_usuario)
-{
-    $sql = 'SELECT r.*, u.nombre AS autor
+    // método para ver las recetas de un usuario cuyo id coincida con el recibido por parámetro
+    public function getRecetasPorUsuario($id_usuario)
+    {
+        $sql = 'SELECT r.*, u.nombre AS autor
             FROM recetas r
             JOIN usuarios u ON r.id_usuario = u.id_usuario
             WHERE r.id_usuario = :id_usuario
             ORDER BY r.id_receta';
-    $resultado = $this->conn->prepare($sql);
-    $resultado->execute(['id_usuario' => $id_usuario]);
-    $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
-    return $datos;
-}
+        $resultado = $this->conn->prepare($sql);
+        $resultado->execute(['id_usuario' => $id_usuario]);
+        $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        return $datos;
+    }
 
     // método para ver todas las recetas
     public function getRecetas()
@@ -199,24 +199,24 @@ public function getRecetasPorUsuario($id_usuario)
         return [];
     }
     //metodo para comprobar si una receta está guardada por el usuario
-public function recetaGuardada($datos)
-{
-    $datos = unserialize($datos);
-    $id_usuario = $datos[1];
-    $id_receta = $datos[2];
-    $sql = "SELECT COUNT(*) FROM usuario_receta WHERE id_usuario = ? AND id_receta = ?";
-    $resultado = $this->conn->prepare($sql);
-    $resultado->execute([$id_usuario, $id_receta]);
-    return $resultado->fetchColumn();
-}
+    public function recetaGuardada($datos)
+    {
+        $datos = unserialize($datos);
+        $id_usuario = $datos[1];
+        $id_receta = $datos[2];
+        $sql = "SELECT COUNT(*) FROM usuario_receta WHERE id_usuario = ? AND id_receta = ?";
+        $resultado = $this->conn->prepare($sql);
+        $resultado->execute([$id_usuario, $id_receta]);
+        return $resultado->fetchColumn();
+    }
     //metodo para comprobar si un usuaqrio es autor de la receta que quiere guardar
-public function esAutorReceta($id_usuario, $id_receta)
-{
-    $sql = "SELECT COUNT(*) FROM recetas WHERE id_receta = ? AND id_usuario = ?";
-    $resultado = $this->conn->prepare($sql);
-    $resultado->execute([$id_receta, $id_usuario]);
-    return $resultado->fetchColumn() > 0;
-}
+    public function esAutorReceta($id_usuario, $id_receta)
+    {
+        $sql = "SELECT COUNT(*) FROM recetas WHERE id_receta = ? AND id_usuario = ?";
+        $resultado = $this->conn->prepare($sql);
+        $resultado->execute([$id_receta, $id_usuario]);
+        return $resultado->fetchColumn() > 0;
+    }
 
     // método para guardar una receta pública en la lista usuario_receta
     public function addReceta($datos)
@@ -232,17 +232,17 @@ public function esAutorReceta($id_usuario, $id_receta)
 
     // método para ver las recetas guardadas por un usuario
     public function getRecetasGuardadasPorUsuario($id_usuario)
-{
-    $sql = "SELECT r.*, u.nombre AS autor
+    {
+        $sql = "SELECT r.*, u.nombre AS autor
             FROM recetas r
             JOIN usuario_receta ur ON r.id_receta = ur.id_receta
             JOIN usuarios u ON r.id_usuario = u.id_usuario
             WHERE ur.id_usuario = ?";
-    $resultado = $this->conn->prepare($sql);
-    $resultado->execute([$id_usuario]);
-    $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
-    return $datos;
-}
+        $resultado = $this->conn->prepare($sql);
+        $resultado->execute([$id_usuario]);
+        $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        return $datos;
+    }
 
     // método para actualizar los datos de una receta cuyo id coincida con el recibido en el array serializado
     public function updateReceta($datos)
@@ -271,19 +271,19 @@ public function esAutorReceta($id_usuario, $id_receta)
 
     // método para eliminar una receta cuyo id coincida con el recibido por parámetro
     public function delReceta($id)
-{
-    $sql = "DELETE FROM recetas WHERE id_receta=$id";
-    $resultado = $this->ejecutaConsulta($sql);
-    return $resultado !== false; // Devuelve true si la consulta fue bien
-}
+    {
+        $sql = "DELETE FROM recetas WHERE id_receta=$id";
+        $resultado = $this->ejecutaConsulta($sql);
+        return $resultado !== false; // Devuelve true si la consulta fue bien
+    }
 
 
-public function delRecetaGuardada($id_usuario, $id_receta)
-{
-    $sql = "DELETE FROM usuario_receta WHERE id_usuario = ? AND id_receta = ?";
-    $resultado = $this->conn->prepare($sql);
-    $resultado->execute([$id_usuario, $id_receta]);
-}
+    public function delRecetaGuardada($id_usuario, $id_receta)
+    {
+        $sql = "DELETE FROM usuario_receta WHERE id_usuario = ? AND id_receta = ?";
+        $resultado = $this->conn->prepare($sql);
+        $resultado->execute([$id_usuario, $id_receta]);
+    }
 
     // método para ver todas las notificaciones
     public function getNotificaciones()
@@ -303,20 +303,20 @@ public function delRecetaGuardada($id_usuario, $id_receta)
     }
 
     // método para ver una notificación cuyo id coincida con el recibido por parámetro
-public function getNotificacionId($id)
-{
-    $sql = 'SELECT * FROM notificaciones WHERE id_notificacion = :id_notificacion';
-    $resultado = $this->conn->prepare($sql);
-    $resultado->execute(['id_notificacion' => $id]);
-    $datos = $resultado->fetch(PDO::FETCH_ASSOC);
-    return $datos;
-}
+    public function getNotificacionId($id)
+    {
+        $sql = 'SELECT * FROM notificaciones WHERE id_notificacion = :id_notificacion';
+        $resultado = $this->conn->prepare($sql);
+        $resultado->execute(['id_notificacion' => $id]);
+        $datos = $resultado->fetch(PDO::FETCH_ASSOC);
+        return $datos;
+    }
 
 
 
     // método para obtener las notificaciones de un usuario cuyo id coincida con el recibido por parámetro
     public function getNotificacionesPorUsuario($id_usuario)
-{
+    {
         $sql = "SELECT n.*, 
                    r.nombre AS remitente_nombre 
             FROM notificaciones n 
@@ -324,126 +324,126 @@ public function getNotificacionId($id)
             JOIN usuarios r ON n.remitente_ID = r.id_usuario
             WHERE n.cliente_ID = :id_usuario
             ORDER BY n.creado_en DESC";
-    $resultado = $this->conn->prepare($sql);
-    $resultado->execute(['id_usuario' => $id_usuario]);
-    $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
-    return $datos;
-}
+        $resultado = $this->conn->prepare($sql);
+        $resultado->execute(['id_usuario' => $id_usuario]);
+        $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        return $datos;
+    }
 
     // método para crear una notificación
     public function crearNotificacion($remitente_ID, $destinatario, $mensaje)
-{
-    if ($destinatario === 'admin') {
-        // Obtener todos los administradores
-        $sql = "SELECT id_usuario FROM usuarios WHERE tipo_usu = 'admin'";
-        $resultado = $this->conn->prepare($sql);
-        $resultado->execute();
-        $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+    {
+        if ($destinatario === 'admin') {
+            // Obtener todos los administradores
+            $sql = "SELECT id_usuario FROM usuarios WHERE tipo_usu = 'admin'";
+            $resultado = $this->conn->prepare($sql);
+            $resultado->execute();
+            $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
-        // Insertar notificación para cada administrador
-        foreach ($datos as $admin) {
-            $this->insertarNotificacion($remitente_ID, $admin['id_usuario'], $mensaje);
-        }
-    } elseif ($destinatario === 'global') {
-        // Obtener todos los usuarios
-        $sql = "SELECT id_usuario FROM usuarios";
-        $resultado = $this->conn->prepare($sql);
-        $resultado->execute();
-        $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            // Insertar notificación para cada administrador
+            foreach ($datos as $admin) {
+                $this->insertarNotificacion($remitente_ID, $admin['id_usuario'], $mensaje);
+            }
+        } elseif ($destinatario === 'global') {
+            // Obtener todos los usuarios
+            $sql = "SELECT id_usuario FROM usuarios";
+            $resultado = $this->conn->prepare($sql);
+            $resultado->execute();
+            $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
-        // Insertar notificación para cada usuario
-        foreach ($datos as $usuario) {
-            $this->insertarNotificacion($remitente_ID, $usuario['id_usuario'], $mensaje);
-        }
-    } else {
-        // Obtener el ID del destinatario por nombre
-        $sql = "SELECT id_usuario FROM usuarios WHERE nombre = :nombre";
-        $resultado = $this->conn->prepare($sql);
-        $resultado->bindValue(':nombre', $destinatario);
-        $resultado->execute();
-        $datos = $resultado->fetch(PDO::FETCH_ASSOC);
-
-        if ($datos) {
-            $this->insertarNotificacion($remitente_ID, $datos['id_usuario'], $mensaje);
+            // Insertar notificación para cada usuario
+            foreach ($datos as $usuario) {
+                $this->insertarNotificacion($remitente_ID, $usuario['id_usuario'], $mensaje);
+            }
         } else {
-            throw new Exception("Usuario no encontrado");
+            // Obtener el ID del destinatario por nombre
+            $sql = "SELECT id_usuario FROM usuarios WHERE nombre = :nombre";
+            $resultado = $this->conn->prepare($sql);
+            $resultado->bindValue(':nombre', $destinatario);
+            $resultado->execute();
+            $datos = $resultado->fetch(PDO::FETCH_ASSOC);
+
+            if ($datos) {
+                $this->insertarNotificacion($remitente_ID, $datos['id_usuario'], $mensaje);
+            } else {
+                throw new Exception("Usuario no encontrado");
+            }
         }
     }
-}
 
-public function insertarNotificacion($remitente_ID, $cliente_ID, $mensaje)
-{
-    // Insertar en la tabla notificaciones
-    $sql = "INSERT INTO notificaciones (remitente_ID, cliente_ID, mensaje, leida)
+    public function insertarNotificacion($remitente_ID, $cliente_ID, $mensaje)
+    {
+        // Insertar en la tabla notificaciones
+        $sql = "INSERT INTO notificaciones (remitente_ID, cliente_ID, mensaje, leida)
             VALUES (:remitente_ID, :cliente_ID, :mensaje, 0)";
-    $resultado = $this->conn->prepare($sql);
-    $resultado->bindValue(':remitente_ID', $remitente_ID);
-    $resultado->bindValue(':cliente_ID', $cliente_ID);
-    $resultado->bindValue(':mensaje', $mensaje);
-    $resultado->execute();
+        $resultado = $this->conn->prepare($sql);
+        $resultado->bindValue(':remitente_ID', $remitente_ID);
+        $resultado->bindValue(':cliente_ID', $cliente_ID);
+        $resultado->bindValue(':mensaje', $mensaje);
+        $resultado->execute();
 
-    // Obtener el ID de la notificación recién insertada
-    $id_notificacion = $this->conn->lastInsertId();
+        // Obtener el ID de la notificación recién insertada
+        $id_notificacion = $this->conn->lastInsertId();
 
-    // Insertar en la tabla usuario_notificacion
-    $sql = "INSERT INTO usuario_notificacion (id_usuario, id_notificacion, leida)
+        // Insertar en la tabla usuario_notificacion
+        $sql = "INSERT INTO usuario_notificacion (id_usuario, id_notificacion, leida)
             VALUES (:id_usuario, :id_notificacion, 0)";
-    $resultado = $this->conn->prepare($sql);
-    $resultado->bindValue(':id_usuario', $cliente_ID);
-    $resultado->bindValue(':id_notificacion', $id_notificacion);
-    $resultado->execute();
-}
+        $resultado = $this->conn->prepare($sql);
+        $resultado->bindValue(':id_usuario', $cliente_ID);
+        $resultado->bindValue(':id_notificacion', $id_notificacion);
+        $resultado->execute();
+    }
 
     // método para marcar una notificación como leída
     public function marcarNotificacionLeida($id_usuario, $id_notificacion)
-{
-    // Actualizar la tabla usuario_notificacion
-    $sql = 'UPDATE usuario_notificacion SET leida = 1 WHERE id_usuario = :id_usuario AND id_notificacion = :id_notificacion';
-    $resultado = $this->conn->prepare($sql);
-    $resultado->execute(['id_usuario' => $id_usuario, 'id_notificacion' => $id_notificacion]);
+    {
+        // Actualizar la tabla usuario_notificacion
+        $sql = 'UPDATE usuario_notificacion SET leida = 1 WHERE id_usuario = :id_usuario AND id_notificacion = :id_notificacion';
+        $resultado = $this->conn->prepare($sql);
+        $resultado->execute(['id_usuario' => $id_usuario, 'id_notificacion' => $id_notificacion]);
 
-    // Actualizar la tabla notificaciones
-    $sql = 'UPDATE notificaciones SET leida = 1 WHERE id_notificacion = :id_notificacion';
-    $resultado = $this->conn->prepare($sql);
-    $resultado->execute(['id_notificacion' => $id_notificacion]);
-}
+        // Actualizar la tabla notificaciones
+        $sql = 'UPDATE notificaciones SET leida = 1 WHERE id_notificacion = :id_notificacion';
+        $resultado = $this->conn->prepare($sql);
+        $resultado->execute(['id_notificacion' => $id_notificacion]);
+    }
 
-// metodo para ver las notificaciones no leídas del usuario cuyo id coincida con el recibido por parámetro
+    // metodo para ver las notificaciones no leídas del usuario cuyo id coincida con el recibido por parámetro
     public function getNotificacionesNoLeidas($id_usuario)
-{
-    $sql = 'SELECT n.*, un.leida, u.nombre AS remitente_nombre
+    {
+        $sql = 'SELECT n.*, un.leida, u.nombre AS remitente_nombre
             FROM notificaciones n
             JOIN usuario_notificacion un ON n.id_notificacion = un.id_notificacion
             JOIN usuarios u ON n.remitente_ID = u.id_usuario
             WHERE un.id_usuario = :id_usuario AND un.leida = 0';
-    $resultado = $this->conn->prepare($sql);
-    $resultado->execute(['id_usuario' => $id_usuario]);
-    $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
-    return $datos;
-}
+        $resultado = $this->conn->prepare($sql);
+        $resultado->execute(['id_usuario' => $id_usuario]);
+        $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        return $datos;
+    }
 
     // método para eliminar una notificación cuyo id coincida con el recibido por parámetro
     public function delNotificacion($id)
-{
-    try {
-        $this->conn->beginTransaction();
+    {
+        try {
+            $this->conn->beginTransaction();
 
-        // Eliminar de la tabla usuario_notificacion
-        $sql = "DELETE FROM usuario_notificacion WHERE id_notificacion = ?";
-        $resultado = $this->conn->prepare($sql);
-        $resultado->execute([$id]);
+            // Eliminar de la tabla usuario_notificacion
+            $sql = "DELETE FROM usuario_notificacion WHERE id_notificacion = ?";
+            $resultado = $this->conn->prepare($sql);
+            $resultado->execute([$id]);
 
-        // Eliminar de la tabla notificaciones
-        $sql = "DELETE FROM notificaciones WHERE id_notificacion = ?";
-        $resultado = $this->conn->prepare($sql);
-        $resultado->execute([$id]);
+            // Eliminar de la tabla notificaciones
+            $sql = "DELETE FROM notificaciones WHERE id_notificacion = ?";
+            $resultado = $this->conn->prepare($sql);
+            $resultado->execute([$id]);
 
-        $this->conn->commit();
-    } catch (Exception $ex) {
-        $this->conn->rollBack();
-        throw $ex;
+            $this->conn->commit();
+        } catch (Exception $ex) {
+            $this->conn->rollBack();
+            throw $ex;
+        }
     }
-}
 
     // método para actualizar la notificación en la base de datos
     public function updateNotificacion($datos)

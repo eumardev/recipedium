@@ -21,10 +21,10 @@ $bloque[8] = $imagen;
 // Serializar el array $bloque
 $dat = serialize($bloque);
 
-// Llamar al método para insertar la receta en la base de datos
+// Llamamos al método para insertar la receta en la base de datos
 $bd->crearReceta($dat);
 
-// Devolver una respuesta en lugar de redirigir
+// Devolvemos una respuesta en lugar de redirigir
 echo 'Receta creada correctamente.';
 
 // Redirigir a la página principal después de crear la receta

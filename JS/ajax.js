@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  // Formulario de notificaciones/mensajes
+  // Formulario de nueva notificaciones/mensajes
   $(document).on("submit", "#mensajeForm", function (e) {
     e.preventDefault();
     if (typeof validateMensajeForm === "function" && !validateMensajeForm()) {
