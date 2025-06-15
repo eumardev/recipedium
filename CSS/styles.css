@@ -54,49 +54,6 @@
   transform: scale(1.08);
 }
 
-/* Aside lateral izquierdo */
-#sidebar {
-  width: 220px;
-  min-width: 180px;
-  max-width: 250px;
-  margin-top: 4vh;
-  margin-right: 2vw;
-  height: auto;
-  box-sizing: border-box;
-  flex-shrink: 0;
-  background: rgba(233, 221, 175, 1);
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-  padding: 1em 0.5em;
-  z-index: 100;
-  display: flex;
-  flex: 1 1 0;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5em;
-}
-#sidebar nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-#sidebar nav ul li {
-  margin-bottom: 0.7em;
-}
-#sidebar nav ul li a {
-  color: #2c3e50;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 0.4em 0.8em;
-  border-radius: 4px;
-  display: block;
-  transition: background 0.2s, color 0.2s;
-}
-#sidebar nav ul li a:hover {
-  background: rgba(120, 103, 33, 1);
-  color: #fff;
-}
-
 /* Layout principal: aside + main */
 .main-layout {
   display: flex;
@@ -135,7 +92,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 1.5vh; /* Menos espacio vertical */
-  padding: 3vh 0;
+  padding: 3vh 1vh;
   background-color: #ecf1f6;
   padding-bottom: 11vh; /* esto para que el footer no tape el final del main */
 }
@@ -373,7 +330,7 @@ button.btn {
     margin-top: auto;
 } */
 
-/*estilos de footer fijo en pie de pantalla*/
+/* Estilos de footer fijo en pie de pantalla */
 .footer {
   position: fixed;
   left: 50%;
@@ -400,22 +357,46 @@ button.btn {
   margin: 0 1vw;
   padding: 0.5em;
   font-size: 1rem;
-}
-.footer a:hover {
-  background-color: rgba(120, 103, 33, 1);
   border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.footer a:hover,
+.footer a:focus {
+  background-color: rgba(120, 103, 33, 1);
   color: #fff;
   text-decoration: none;
 }
+
 .footer-left,
 .footer-center,
 .footer-right {
   flex: 1;
   text-align: center;
 }
+
 .footer-left {
   text-align: left;
+  padding-left: 1vw;
 }
+
+.footer-left .footer-link {
+  display: inline-block;
+  padding: 0.2em 0.7em;
+  margin: 0.1em 0;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.footer-left .footer-link:hover,
+.footer-left .footer-link:focus {
+  background-color: rgba(120, 103, 33, 1);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.2em 0.7em;
+}
+
 .footer-right {
   text-align: right;
 }
@@ -430,7 +411,9 @@ button.btn {
   object-fit: contain;
   transition: transform 0.2s;
 }
-.footer a:hover .social-icon {
+
+.footer a:hover .social-icon,
+.footer a:focus .social-icon {
   transform: scale(1.12);
 }
 
@@ -467,6 +450,7 @@ button.btn {
   height: auto;
   font-weight: bold;
   color: #fff;
+  padding-left: 1vw;
 }
 
 .headerbar h1,
@@ -556,11 +540,13 @@ button.btn {
 .nav-item:focus-within .dropdown-menu,
 .nav-item:hover .dropdown-menu {
   display: block;
+  
 }
 .nav-link:hover {
   background-color: rgba(120, 103, 33, 1);
   border-radius: 4px;
   color: #fff;
+  text-decoration: none;
 }
 .dropdown-menu {
   display: none;
@@ -591,10 +577,12 @@ button.btn {
 .dropdown-item:hover {
   background-color: rgba(120, 103, 33, 1);
   color: #fff;
+  text-decoration: none;
 }
 .nav-item:focus-within .dropdown-menu,
 .nav-item:hover .dropdown-menu {
   display: block;
+  text-decoration: none;
 }
 .navbar-nav .dropdown-menu {
   min-width: 200px;
@@ -778,4 +766,98 @@ select {
   align-items: flex-start;
   width: 100%;
   margin-left: 2em;
+}
+
+/* Aside lateral izquierdo */
+#sidebar {
+  width: 100%;
+  min-width: 180px;
+  max-width: 250px;
+  margin-top: 4vh;
+  margin-right: 2vw;
+  height: auto;
+  box-sizing: border-box;
+    overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(233, 221, 175, 1);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  padding: 1em 0.5em;
+  z-index: 100;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
+}
+
+#sidebar nav {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#sidebar .sidebar-list,
+#sidebar .sidebar-list > div {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#sidebar .sidebar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+#sidebar .sidebar-list a {
+  color: #2c3e50;
+  background: transparent;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.4em 0.8em;
+  border-radius: 4px;
+  display: block;
+  transition: background 0.2s, color 0.2s;
+  font-size: 1.08em;
+  letter-spacing: 0.02em;
+  width: 100%;
+  box-sizing: border-box;
+   overflow-wrap: break-word;
+  word-break: break-word;
+  text-align: left;
+}
+
+#sidebar .sidebar-list a:hover,
+#sidebar .sidebar-list a:focus {
+  background: rgba(120, 103, 33, 1);
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  outline: none;
+}
+
+/* Centrar títulos principales y secundarios */
+#principal h2,
+#principal h3,
+#principal h4 {
+  text-align: center;
+  margin-top: 1.2em;
+  margin-bottom: 0.8em;
+}
+
+/* Mejorar separación de párrafos y listas */
+#principal p,
+#principal ul {
+  margin-bottom: 1em;
+  line-height: 1.6;
+}
+
+/* Opcional: mejorar el aspecto de las listas */
+#principal ul {
+  padding-left: 2em;
 }

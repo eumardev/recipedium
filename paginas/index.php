@@ -1,27 +1,3 @@
-<?php
-session_start();
-require './basededatos.php';
-
-$db = new basededatos();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user = $_POST['nombre'] ?? '';
-    $pass = $_POST['clave'];
-
-    $resultado = $db->comprobarUsuario($user, $pass);
-
-    if ($resultado === 'not_found') {
-        $_SESSION['error_message'] = "El usuario no existe. Por favor, regístrese.";
-    } elseif ($resultado === 'incorrect') {
-        $_SESSION['error_message'] = "Credenciales incorrectas. Intente de nuevo.";
-    } elseif (is_array($resultado)) {
-        //inicia sesión con el usuario autenticado
-        $_SESSION['usuario'] = serialize($resultado); // Guardamos el resultado completo en la sesión
-        header("Location: ./app.php"); // Redirige a la página principal de la aplicación
-        exit();
-    }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -56,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'existe') echo 'style="display: none;"'; ?>>
             <h2>Login</h2>
 
-            <form id="loginForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+            <form id="loginForm" action="#" method="POST">
 
                 <label for="nombre_usuario">Nombre de usuario:</label>
                 <input type="text" placeholder="Usuario" name="nombre" id="nombre_usuario" maxlength="15">
@@ -78,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 <?php endif; ?>
             </form>
-
+            <div id="divRespuestaLogin"></div>
             <p>¿No tienes una cuenta? <a href="#" id="showRegisterForm">Regístrate aquí</a></p>
         </section>
 
@@ -112,10 +88,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <footer class="footer">
         <div class="footer-left">
             <div>
-                <!-- <a href=""/a> -->
+                <a href="./privacidad.html" class="footer-link">Política de privacidad</a>
             </div>
             <div>
-                <!-- <a href=""/a> -->
+                <a href="./información_legal.html" class="footer-link">Información legal</a>
+            </div>
+            <div>
+                <a href="./faq.html" class="footer-link">FAQ´s</a>
             </div>
         </div>
         <div class="footer-center">

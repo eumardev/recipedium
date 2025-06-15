@@ -23,70 +23,60 @@
 <body>
     <div class="container-fluid" id="contenedor">
         <header class="headerbar">
-            <a class="" href="../index.html"><img src="../imagenes/logo_recipedium.svg" alt="Logo Recipedium" class="logo"></a>
-            
+            <a href="../index.html"><img src="../imagenes/logo_recipedium.svg" alt="Logo Recipedium" class="logo"></a>
             <div class="titulo-container">
                 <h1 class="titulo">RECIPEDIUM</h1>
                 <h2 class="tagline">Tu recetario de cocina y mucho más</h2>
             </div>
             <div class="user-info">
-                <a href="./index.php" class="login" target="_blank"><img src="../imagenes/user_818842.png"
-                        alt="Inicio sesion/registro" class="login-icon">Iniciar sesión / Registrarse</a>
+                <a href="./index.php" class="login" target="_blank">
+                    <img src="../imagenes/user_818842.png" alt="Inicio sesion/registro" class="login-icon">
+                    Iniciar sesión / Registrarse
+                </a>
             </div>
         </header>
         <nav class="navbar" id="nav">
             <div class="menu-toggle" aria-label="Abrir menú" tabindex="0"><span></span></div>
-            <div class="nav">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            aria-expanded="false">Concursos</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Concursos abiertos</a></li>
-                            <li>
-                                <hr>
-                            </li>
-                            <li><a class="dropdown-item" href="./ganadores.html">Ganadores últimos concursos</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                            aria-expanded="false">Referentes en el mundo de la cocina</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./referenteCocina1.html">Martín Berasategui</a></li>
-                            <li>
-                                <hr>
-                            </li>
-                            <li><a class="dropdown-item" href="./referenteCocina2.html">Ferrán Adriá</a></li>
-                            <li>
-                                <hr>
-                            </li>
-                            <li><a class="dropdown-item" href="./referenteCocina3.html">Ángel León    </a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                            aria-expanded="false">Eventos de cocina</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./eventosProximos.html">Próximos eventos</a></li>
-                            <li>
-                                <hr>
-                            </li>
-                            <li><a class="dropdown-item" href="./eventosPendientes.html">Eventos por confirmar</a></li>
-                        </ul>
-                    </li>
-                </ul>
+            <div class="navbar-nav">
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-expanded="false">Concursos</a>
+                    <div class="dropdown-menu">
+                        <div><a class="dropdown-item" href="#">Concursos abiertos</a></div>
+                        <hr>
+                        <div><a class="dropdown-item" href="./ganadores.html">Ganadores últimos concursos</a></div>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" aria-expanded="false">Referentes en el mundo de la cocina</a>
+                    <div class="dropdown-menu">
+                        <div><a class="dropdown-item" href="./referenteCocina1.html">Martín Berasategui</a></div>
+                        <hr>
+                        <div><a class="dropdown-item" href="./referenteCocina2.html">Ferrán Adriá</a></div>
+                        <hr>
+                        <div><a class="dropdown-item" href="./referenteCocina3.html">Ángel León</a></div>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" aria-expanded="false">Eventos de cocina</a>
+                    <div class="dropdown-menu">
+                        <div><a class="dropdown-item" href="./eventosProximos.html">Próximos eventos</a></div>
+                        <hr>
+                        <div><a class="dropdown-item" href="./eventosPendientes.html">Eventos por confirmar</a></div>
+                    </div>
+                </div>
             </div>
         </nav>
         <div class="main-layout">
             <aside id="sidebar" class="card">
                 <nav>
-                    <ul class="sidebar-list">
-                        <li><a href="#Concurso1">Concurso activo</a></li>
-                        <!-- <li><a href="#Concurso2">Concurso 2</a></li>
-                        <li><a href="#Concurso3">Concurso 3</a></li>
-                        <li><a href="#Concurso4">Concurso 4</a></li> -->
-                    </ul>
+                    <div class="sidebar-list">
+                        <div><a href="#Concurso1" >Concurso activo</a></div>
+                        <!--
+                        <div><a href="#Concurso2">Concurso 2</a></div>
+                        <div><a href="#Concurso3">Concurso 3</a></div>
+                        <div><a href="#Concurso4">Concurso 4</a></div>
+                        -->
+                    </div>
                 </nav>
             </aside>
             <main>
@@ -97,12 +87,9 @@
                                 <h2>Concurso </h2>
                             </header>
                             <p>En estos momentos no tenemos ningún concurso en activo, pero estamos trabajando en ello. ¡Esperamos que lo tengas en cuenta!</p>
-                          
-                            </p>
                             <!-- dejamos preparado el contenedor de la imagen por si hiciera falta, en tal caso se añadiría las clases a styles.css -->
                             <div class="cont_img">
-                                <img src=""
-                                    class="img_Concurso" alt="">
+                                <img src="" class="img_Concurso" alt="">
                             </div>
                         </article>
                     </section>
@@ -112,13 +99,13 @@
         <footer id="footer" class="footer">
             <div class="footer-left">
                 <div>
-                    <a href="/paginas/privacidad.html" class="footer-link">Política de privacidad</a>
+                    <a href="./privacidad.html" class="footer-link">Política de privacidad</a>
                 </div>
                 <div>
-                    <a href="/paginas/información_legal.html" class="footer-link">Información legal</a>
+                    <a href="./información_legal.html" class="footer-link">Información legal</a>
                 </div>
                 <div>
-                    <a href="/paginas/faq.html" class="footer-link">FAQ´s</a>
+                    <a href="./faq.html" class="footer-link">FAQ´s</a>
                 </div>
                 <!-- <div>
                     <a href="#" class="footer-link">Contacto</a>
@@ -128,13 +115,13 @@
                 &copy; 2025 Recipedium. Todos los derechos reservados.
             </div>
             <div class="footer-right">
-            <a href="https://www.youtube.com/@Recipedium" target="_blank"><img src="../imagenes/youtube.png"
-                    alt="Youtube" class="social-icon"></a>
-            <a href="https://wa.me/34605019788" target="_blank"><img src="../imagenes/whatsapp_4494495.png" alt="Whatsapp"
-                    class="social-icon"></a>
-            <a href="https://instagram.com/recipedium" target="_blank"><img src="../imagenes/instagram_4494489.png"
-                    alt="Instagram" class="social-icon"></a>
-        </div>
+                <a href="https://www.youtube.com/@Recipedium" target="_blank"><img src="../imagenes/youtube.png"
+                        alt="Youtube" class="social-icon"></a>
+                <a href="https://wa.me/34605019788" target="_blank"><img src="../imagenes/whatsapp_4494495.png" alt="Whatsapp"
+                        class="social-icon"></a>
+                <a href="https://instagram.com/recipedium" target="_blank"><img src="../imagenes/instagram_4494489.png"
+                        alt="Instagram" class="social-icon"></a>
+            </div>
         </footer>
     </div>
 </body>

@@ -27,7 +27,7 @@ $id_usuario = $datosusuario['id_usuario']; // Obtener el ID del usuario de la se
                 <label for="email" class="negrita">Correo electrónico:</label>
             </div>
             <input type="hidden" name="remitente_ID" value="<?php echo $id_usuario; ?>">
-            <input type="hidden" name="destinatario" value="admin">
+            <input type="hidden" name="destinatario" value="soporte">
             <button type="submit" class="btn">Enviar</button>
         </form>
         <div id="divRespuesta"></div>

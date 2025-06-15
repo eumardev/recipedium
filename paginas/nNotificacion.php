@@ -9,7 +9,7 @@ $destinatario = $_POST["destinatario"];
 $mensaje = $_POST["mensaje"];
 
 // Verificar si el destinatario es 'admin' o 'global'
-if ($destinatario === 'admin' || $destinatario === 'global') {
+if ($destinatario === 'soporte' || $destinatario === 'global') {
     $bd->crearNotificacion($remitente_ID, $destinatario, $mensaje);
     echo 'Notificación enviada correctamente.';
 } else {

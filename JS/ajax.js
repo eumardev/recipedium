@@ -122,6 +122,32 @@ $(document).ready(function () {
     });
   });
 
+// Validacion de login con AJAX
+$(document).on("submit", "#loginForm", function (e) {
+  e.preventDefault();
+  if (typeof validateLoginForm === "function" && !validateLoginForm()) {
+    return false;
+  }
+  $.ajax({
+    type: "POST",
+    url: "./login.php",
+    data: $(this).serialize(),
+    success: function (response) {
+      if (response.trim() === "ok") {
+        // si el login es correcto, redirige a app.php con window.location.href que lo que hace es cambiar la url
+        window.location.href = "./app.php";
+      } else {
+        // Solo muestra el mensaje si hay error
+        $("#divRespuestaLogin").html(response);
+      }
+    },
+    error: function () {
+      $("#divRespuestaLogin").html(
+        '<div class="error-message">Error al iniciar sesión. Inténtalo de nuevo.</div>'
+      );
+    },
+  });
+});
   // Modificacion de usuario con AJAX
   $(document).on("submit", "#modificaUsuarioForm", function (e) {
     e.preventDefault();

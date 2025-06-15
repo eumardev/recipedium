@@ -54,40 +54,48 @@
   transform: scale(1.08);
 }
 
-/* Aside lateral izquierdo */
+/* Aside central con scroll para pantallas medianas */
 #sidebar {
   width: 100%;
   min-width: 0;
   max-width: 100%;
-  margin: 2vh 0 2vh 0;
+  margin: 1vh 0 1vh 0;
   border-radius: 8px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
   box-sizing: border-box;
-  /* gap: 1em; */
-  padding: 1em 0.5em;
+  padding: 0.6em 0.5em;
   background: rgba(233, 221, 175, 1);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-  /* z-index: 100;
-  height: auto; */
+  max-height: 40vh; /* definimos la altura máxima */
+  min-height: 60px; /* aseguramos un mínimo */
+  overflow-y: auto;
 }
 
-#sidebar nav ul {
+#sidebar nav {
+  width: 100%; /* Asegura que el nav ocupa todo el ancho del sidebar */
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#sidebar .sidebar-list {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  list-style: none;
-  width: 100%;
   gap: 1em;
   padding: 0;
   margin: 0;
+  width: 100%; /* Ocupa todo el ancho del nav */
 }
-#sidebar nav ul li {
-  margin-bottom: 0;
+
+#sidebar .sidebar-list li {
+  width: 100%; /* Ocupa todo el ancho del contenedor */
 }
-#sidebar nav ul li a {
+
+#sidebar .sidebar-list a {
   color: #2c3e50;
   text-decoration: none;
   font-weight: bold;
@@ -95,11 +103,21 @@
   border-radius: 4px;
   display: block;
   transition: background 0.2s, color 0.2s;
+  width: 100%; /* Ocupa todo el ancho del li */
+  box-sizing: border-box;
+   text-align: center; 
 }
-#sidebar nav ul li a:hover {
+
+#sidebar .sidebar-list a:hover,
+#sidebar .sidebar-list a:focus {
   background: rgba(120, 103, 33, 1);
   color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 /* Layout principal: aside debajo del nav y encima del main */
 .main-layout {
   flex-direction: column;
@@ -130,7 +148,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 1.5vh;
-  padding: 3vh 0;
+  padding: 3vh 1vh;
   background-color: #ecf1f6;
   padding-bottom: 25vh; /*esto solo lo aplico si decido usar el footer fijo en pie de pantalla*/
 }
@@ -527,13 +545,15 @@ button.btn {
 .nav-link {
   font-size: 1rem;
   color: #554400;
-  text-decoration: none;
+  text-decoration: none; /* Elimina subrayado */
   padding: 0.5em;
 }
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus {
   background-color: rgba(120, 103, 33, 1);
   border-radius: 4px;
   color: #fff;
+  text-decoration: none; /* Elimina subrayado en hover/focus */
 }
 .dropdown-menu {
   display: none;
@@ -559,11 +579,13 @@ button.btn {
   padding: 1em 2vw;
   background-color: rgba(233, 221, 175, 1);
   color: #333;
-  text-decoration: none;
+  text-decoration: none; /* Elimina subrayado */
 }
-.dropdown-item:hover {
+.dropdown-item:hover,
+.dropdown-item:focus {
   background-color: rgba(120, 103, 33, 1);
   color: #fff;
+  text-decoration: none; /* Elimina subrayado en hover/focus */
 }
 .nav-item:focus-within .dropdown-menu,
 .nav-item:hover .dropdown-menu {

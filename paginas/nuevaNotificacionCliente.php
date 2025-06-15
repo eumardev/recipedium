@@ -22,7 +22,7 @@ $id_usuario = $datosusuario['id_usuario']; // Obtener el ID del usuario de la se
         ?>
         <form id="mensajeForm">
             <div class="form-group">
-                <label for="destinatario" class="negrita ">Nombre del Destinatario (o "admin" para todos los administradores):</label>
+                <label for="destinatario" class="negrita ">Nombre del Destinatario (o "soporte" para todos los administradores):</label>
                 <input class="form-control" placeholder="Nombre del Destinatario"  name="destinatario" type="text" id="destinatario">
             </div>
             <div class="form-group">

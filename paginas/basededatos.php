@@ -333,7 +333,7 @@ class basededatos
     // método para crear una notificación
     public function crearNotificacion($remitente_ID, $destinatario, $mensaje)
     {
-        if ($destinatario === 'admin') {
+        if ($destinatario === 'soporte') {
             // Obtener todos los administradores
             $sql = "SELECT id_usuario FROM usuarios WHERE tipo_usu = 'admin'";
             $resultado = $this->conn->prepare($sql);
