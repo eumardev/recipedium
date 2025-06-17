@@ -120,17 +120,20 @@
 
 /* Layout principal: aside debajo del nav y encima del main */
 .main-layout {
+  display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 0;
   width: 100%;
-  padding-bottom: 25vh;
+  /* padding-bottom: 20vh; */
 }
 
 /* Main ocupa todo el ancho */
 .main-layout main {
+  flex: none;
   width: 100%;
   min-width: 0;
-  padding-bottom: 25vh;
+  /* padding-bottom: 20vh; */
 }
 
 body {
@@ -150,7 +153,7 @@ body {
   gap: 1.5vh;
   padding: 3vh 1vh;
   background-color: #ecf1f6;
-  padding-bottom: 25vh; /*esto solo lo aplico si decido usar el footer fijo en pie de pantalla*/
+  padding-bottom: 22vh; /*esto solo lo aplico si decido usar el footer fijo en pie de pantalla*/
 }
 
 /* Contenedores principales */
@@ -279,9 +282,14 @@ button.btn {
   max-width: 700px;
   margin: 2vh auto;
 }
-
+/* para el maind e index.php */
 .main-index {
-  padding-bottom: 10vh; /* para dejar que main deje espacio para el footer fijo */
+  width: 90vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-top: 10vh;
+  padding-bottom: 14vh;
 }
 
 .form-group {

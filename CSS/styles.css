@@ -63,7 +63,7 @@
   min-height: 80vh;
   gap: 1.5vh;
   background-color: #ecf1f6;
-  padding-bottom: 11vh; /* Para que el fondo llegue hasta el footer fijo */
+  /* padding-bottom: 11vh; Para que el fondo llegue hasta el footer fijo */
 }
 .main-layout main {
   flex: 4 1 0;
@@ -72,7 +72,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding-bottom: 11vh; /*esto solo lo aplico si decido usar el footer fijo en pie de pantalla*/
+  /* padding-bottom: 1vh; esto solo lo aplico si decido usar el footer fijo en pie de pantalla */
 }
 
 body {
@@ -94,7 +94,7 @@ body {
   gap: 1.5vh; /* Menos espacio vertical */
   padding: 3vh 1vh;
   background-color: #ecf1f6;
-  padding-bottom: 11vh; /* esto para que el footer no tape el final del main */
+  padding-bottom: 18vh; /* esto para que el footer no tape el final del main */
 }
 
 /* Contenedores principales */
@@ -109,7 +109,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1vw;
-  padding-bottom: 11vh;
+  /* padding-bottom: 11vh; */
 }
 
 /* Centrar y ajustar ancho de las imágenes de noticia y su contenedor */
@@ -224,9 +224,14 @@ button.btn {
   max-width: 600px;
   margin: 1.2vh auto;
 }
-
+/* para el maind e index.php */
 .main-index {
-  padding-bottom: 8vh; /* para dejar que main deje espacio para el footer fijo */
+  width: 90vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-top: 5vh;
+  padding-bottom: 15vh;
 }
 
 .form-group {
