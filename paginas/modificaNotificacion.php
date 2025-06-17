@@ -24,7 +24,7 @@ $datos = $bd->getNotificaciones();
             echo "<p><strong>Fecha:</strong> " . htmlspecialchars($notificacion['creado_en']) . "</p>";
             echo "</div>";
             echo "<div class=\"notificacion-acciones\">";
-            echo "<a href=\"./app.php?opcion=15&id=" . htmlspecialchars($notificacion['id_notificacion']) . "\" class=\"btn \">Modificar</a>";
+            echo "<a href=\"./app.php?opcion=3&id=" . htmlspecialchars($notificacion['id_notificacion']) . "\" class=\"btn \">Modificar</a>";
             echo "</div>";
             echo "</div>";
             echo "</div>";

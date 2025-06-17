@@ -23,14 +23,12 @@ $id_usuario = $datosusuario['id_usuario']; // Obtener el ID del usuario de la se
         <form id="contactoForm">
             <div class="form-group">
                 <label for="mensaje" class="negrita ">Mensaje:</label>
-                <textarea class="form-control" placeholder="Introduce tu consulta" name="mensaje" id="mensaje"></textarea>
-                <label for="email" class="negrita">Correo electrónico:</label>
+                <textarea class="form-control" placeholder="Introduce tu consulta" name="mensaje" id="mensaje"></textarea>             
             </div>
             <input type="hidden" name="remitente_ID" value="<?php echo $id_usuario; ?>">
             <input type="hidden" name="destinatario" value="soporte">
             <button type="submit" class="btn">Enviar</button>
         </form>
-        <div id="divRespuesta"></div>
         <div id="divRespuesta"></div>
     </div>
 </div>

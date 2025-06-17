@@ -1,4 +1,4 @@
-// la descripción del uso e implementación de este método se encuentra en el documento pdf adjunto
+// Función que controla el FAQ, al hacer clic en una pregunta, se despliega la respuesta correspondiente y se ocultan las demás respuestas
 function iniciaFAQ() {
   var preguntas = $(".question");
   preguntas.off("click").on("click", function () {

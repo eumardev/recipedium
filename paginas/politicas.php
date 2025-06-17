@@ -14,7 +14,7 @@
         </nav>
     </aside>
     <section id="principal">
-        <h2>POLÍTICA DE PRIVACIDAD</h2>
+        <h3>POLÍTICA DE PRIVACIDAD</h3>
         <p>Última actualización: Enero 2023.</p>
         <p id="1">1. INFORMACIÓN AL USUARIO</p>
         <p>

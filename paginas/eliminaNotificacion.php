@@ -2,7 +2,7 @@
 include_once './basededatos.php';
 $bd = new basededatos();
 $datos = $bd->getNotificaciones();
-?>
+?>  
 
     <div class="container">
         <h2>Listado global de notificaciones a eliminar</h2>

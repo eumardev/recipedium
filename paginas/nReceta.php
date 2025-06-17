@@ -13,9 +13,12 @@ $bloque[7] = isset($_POST["publica"]) ? 1 : 0; // Si el checkbox está marcado, 
 
 // Manejo de la imagen
 $imagen = null;
+// comprueba si se ha subido un archivo, en nuestro caso una foto y que no haya errores
 if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
+    // Si hay imagen, usa file_get_contents() para leer el contenido binario del archivo temporal subido y guarda ese contenido binario en la variable $imagen.
     $imagen = file_get_contents($_FILES['foto']['tmp_name']);
 }
+// Añade la imagen al array $bloque en la posición 8
 $bloque[8] = $imagen;
 
 // Serializar el array $bloque
@@ -26,9 +29,3 @@ $bd->crearReceta($dat);
 
 // Devolvemos una respuesta en lugar de redirigir
 echo 'Receta creada correctamente.';
-
-// Redirigir a la página principal después de crear la receta
-// $redir = "cargar('#principal','./portada.php');";
-// header("Location:./app.php?$redir");
-// exit();
-?>

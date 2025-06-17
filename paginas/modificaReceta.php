@@ -33,7 +33,7 @@ $datos = $bd->getRecetas();
             echo "</div>";
             echo "</div>";
             echo "<div class=\"receta-acciones\">";
-            echo "<a href=\"./app.php?opcion=9&id=$receta[id_receta]\" class=\"btn\">Modificar</a>";
+            echo "<a href=\"./app.php?opcion=1&id=$receta[id_receta]\" class=\"btn\">Modificar</a>";
             echo "</div>";
             echo "</div>";
         }

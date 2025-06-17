@@ -1,5 +1,3 @@
-// Delegación de eventos para validación de formularios (funciona con AJAX y carga dinámica)
-
 // Array global de palabras prohibidas, lo hacemos de esta manera para que sea accesible por todas las funciones, ya que lo vamos a usar en varias validaciones
 const palabrasProhibidas = [
   "drop",
@@ -19,12 +17,6 @@ function contienePalabraProhibida(texto) {
     texto.toLowerCase().includes(palabra)
   );
 }
-
-// $(document).on("submit", "#loginForm", function (event) {
-//   if (!validateLoginForm()) {
-//     event.preventDefault();
-//   }
-// });
 
 // --- VALIDACIONES ---
 
@@ -155,9 +147,9 @@ function validateRecetaForm() {
   const instrucciones = document.getElementById("instrucciones").value;
 
   const tituloRegex = /^.{3,100}$/;
-  const ingredientesRegex = /^.{10,1000}$/;
+  const ingredientesRegex = /^.{10,1000}$/s;
   const tiempoRegex = /^[0-9]+$/;
-  const instruccionesRegex = /^.{10,2000}$/;
+  const instruccionesRegex = /^.{10,2000}$/s;
 
   if (!tituloRegex.test(titulo)) {
     alert("El título debe tener entre 3 y 100 caracteres.");

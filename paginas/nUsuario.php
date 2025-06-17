@@ -8,7 +8,6 @@ $bloque[2]=$_POST["DNI"];
 $bloque[3]=$_POST["email"];
 $bloque[4]=$_POST["clave"];
 $bloque[5]=$_POST["tipo_usu"];
-// $bloque[6]=$_POST["creado_en"];
 $dat=serialize($bloque);
 $existeUsu=$bd->usuarioRegistrado($dat);
 

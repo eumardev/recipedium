@@ -9,8 +9,4 @@ if ($id_notificacion > 0) {
 } else {
     echo "Error";
 }
-// $id=$_GET["id"];
-// $bd->delNotficacion($id);
-// $redir = "cargar('#principal','./portada.php');";
-// header("Location:./app.php?$redir");
 ?>

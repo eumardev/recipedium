@@ -13,8 +13,4 @@ if (isset($_POST['id_receta'])) {
     echo 'error';
 }
 
-// $id=$_GET["id"];
-// $bd->delReceta($id);
-// $redir = "cargar('#principal','./portada.php');";
-// header("Location:./app.php?$redir");
 ?>

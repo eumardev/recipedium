@@ -36,9 +36,8 @@ $notificaciones = $bd->getNotificaciones(); // Obtener todas las notificaciones
                 echo "<p><strong>Fecha:</strong> " . htmlspecialchars($notificacion['creado_en']) . "</p>";
                 echo "</div>";
                 echo "<div class=\"notificacion-acciones\">";
-                echo "<a href=\"./app.php?opcion=15&id=" . htmlspecialchars($notificacion['id_notificacion']) . "\" class=\"btn\">Modificar</a>";
+                echo "<a href=\"./app.php?opcion=3&id=" . htmlspecialchars($notificacion['id_notificacion']) . "\" class=\"btn\">Modificar</a>";
                 echo "<button class=\"btn  eliminar-notificacion\" data-id=\"" . htmlspecialchars($notificacion['id_notificacion']) . "\">Eliminar</button>";
-                // echo "<a href=\"./eNotificacion.php?id=" . htmlspecialchars($notificacion['id_notificacion']) . "\" class=\"btn \">Eliminar</a>";
                 echo "</div>";
                 echo "</div>";
                 echo "</div>";

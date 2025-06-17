@@ -2,7 +2,7 @@
 include_once './basededatos.php';
 $bd = new basededatos;
 $id = $_GET['id'];
-$datos = $bd->getUsuarioId($id); 
+$datos = $bd->getUsuarioId($id);
 ?>
 <div class="container">
     <div class="form-container">

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,14 +22,16 @@
 
 <body>
     <header class="headerbar">
-        <a class="" href="../index.html"><img src="../imagenes/logo_recipedium.svg" alt="Logo Recipedium"
-                class="logo"></a>
-        <h1 class="">Recipedium</h1>
+        <a href="../index.html"><img src="../imagenes/logo_recipedium.svg" alt="Logo Recipedium" class="logo"></a>
+        <div class="titulo-container">
+            <h1 class="titulo">RECIPEDIUM</h1>
+            <h2 class="tagline">Tu recetario de cocina y mucho más</h2>
+        </div>
     </header>
     <main class="main-index">
         <section id="login" class="form-section"
             <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'existe') echo 'style="display: none;"'; ?>>
-            <h2>Login</h2>
+            <h3>Login</h3>
 
             <form id="loginForm" action="#" method="POST">
 
@@ -59,7 +60,7 @@
         </section>
 
         <section id="registro" class="form-section" style="display: none;">
-            <h2>Registro</h2>
+            <h3>Registro</h3>
             <form id="registerForm" action="#" method="POST">
                 <div class="form-group">
                     <label for="nombre">Usuario:</label>

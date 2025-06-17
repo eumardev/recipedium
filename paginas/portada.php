@@ -44,7 +44,6 @@ $datos = $bd->getRecetasPublicas();
                 echo "</div>";
                 echo "</div>";
                 echo "<div class=\"receta-acciones\">";
-                // echo "<a href=\"./app.php?opcion=16&id_receta=" . htmlspecialchars($receta['id_receta']) . "&id_usuario=" . htmlspecialchars($id_usuario) . "\" class=\"btn \">Guardar Receta</a>";
                 echo "<button class=\"btn guardar-receta\" data-id=\"" . htmlspecialchars($receta['id_receta']) . "\">Guardar Receta</button>";
                 echo "</div>";
                 echo "<div class=\"divRespuesta\"></div>";

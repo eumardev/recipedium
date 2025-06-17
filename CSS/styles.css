@@ -109,6 +109,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1vw;
+  padding-bottom: 11vh;
 }
 
 /* Centrar y ajustar ancho de las imágenes de noticia y su contenedor */
@@ -605,9 +606,7 @@ a:hover {
   color: rgba(120, 103, 33, 1);
   text-decoration: none;
 }
-/* h2 {
-  text-align: center;
-} */
+
 .search-container {
   margin-bottom: 1vh;
 }
@@ -642,6 +641,7 @@ h3 {
   font-size: clamp(0.95rem, 0.9rem + 0.7vw, 1.5rem);
   font-weight: bold;
   margin-bottom: 0.7vh;
+  text-align: center; 
 }
 p {
   font-size: clamp(0.625rem, 0.8rem + 0.5vw, 1.2rem);
@@ -657,7 +657,7 @@ a {
 }
 a:hover {
   color: rgba(120, 103, 33, 1);
-  text-decoration: underline;
+  text-decoration: none;
 }
 li {
   font-size: clamp(0.95rem, 0.8rem + 0.5vw, 1.2rem);
@@ -777,7 +777,7 @@ select {
   margin-right: 2vw;
   height: auto;
   box-sizing: border-box;
-    overflow: hidden;
+  overflow: hidden;
   flex-shrink: 0;
   background: rgba(233, 221, 175, 1);
   border-radius: 8px;

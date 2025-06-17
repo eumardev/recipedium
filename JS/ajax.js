@@ -122,32 +122,31 @@ $(document).ready(function () {
     });
   });
 
-// Validacion de login con AJAX
-$(document).on("submit", "#loginForm", function (e) {
-  e.preventDefault();
-  if (typeof validateLoginForm === "function" && !validateLoginForm()) {
-    return false;
-  }
-  $.ajax({
-    type: "POST",
-    url: "./login.php",
-    data: $(this).serialize(),
-    success: function (response) {
-      if (response.trim() === "ok") {
-        // si el login es correcto, redirige a app.php con window.location.href que lo que hace es cambiar la url
-        window.location.href = "./app.php";
-      } else {
-        // Solo muestra el mensaje si hay error
-        $("#divRespuestaLogin").html(response);
-      }
-    },
-    error: function () {
-      $("#divRespuestaLogin").html(
-        '<div class="error-message">Error al iniciar sesión. Inténtalo de nuevo.</div>'
-      );
-    },
+  // Formulario de login con AJAX
+  $(document).on("submit", "#loginForm", function (e) {
+    e.preventDefault();
+    if (typeof validateLoginForm === "function" && !validateLoginForm()) {
+      return false;
+    }
+    $.ajax({
+      type: "POST",
+      url: "./login.php",
+      data: $(this).serialize(),
+      success: function (response) {
+        if (response.trim() === "ok") {
+          window.location.href = "./app.php";
+        } else {
+          $("#divRespuestaLogin").html(response);
+        }
+      },
+      error: function () {
+        $("#divRespuestaLogin").html(
+          '<div class="error-message">Error al iniciar sesión. Inténtalo de nuevo.</div>'
+        );
+      },
+    });
   });
-});
+
   // Modificacion de usuario con AJAX
   $(document).on("submit", "#modificaUsuarioForm", function (e) {
     e.preventDefault();
@@ -160,8 +159,12 @@ $(document).on("submit", "#loginForm", function (e) {
       data: $(this).serialize(),
       success: function (response) {
         $("#divRespuestaModificacion").html(response);
+        
         if (response.includes("Usuario modificado correctamente")) {
-          $("#modificaUsuarioForm")[0].reset();
+          var idUsuario = $("#id_usuario").val();
+          setTimeout(function () {
+            cargar("#principal", "./mUsuario.php?id=" + idUsuario);
+          }, 1500);
         }
       },
       error: function () {
@@ -190,7 +193,10 @@ $(document).on("submit", "#loginForm", function (e) {
           "<p>" + response + "</p>"
         );
         if (response.includes("Notificacion modificada correctamente")) {
-          $("#modificaNotificacionForm")[0].reset();
+          var idNotificacion = $("#id_notificacion").val();
+          setTimeout(function () {
+            cargar("#principal", "./mNotificacion.php?id=" + idNotificacion);
+          }, 1500); // retardo 1.5 segundos
         }
       },
       error: function () {
@@ -218,8 +224,12 @@ $(document).on("submit", "#loginForm", function (e) {
       contentType: false,
       success: function (response) {
         $("#divRespuestaModificacionReceta").html(response);
-        if (response.includes("Recetilla modificada correctamente")) {
-          $("#modificaRecetaForm")[0].reset();
+        if (response.includes("Receta modificada correctamente")) {
+          // Recarga el formulario con los datos actualizados tras 1 segundo y medio
+          var idReceta = $("#id_receta").val();
+          setTimeout(function () {
+            cargar("#principal", "./mReceta.php?id=" + idReceta);
+          }, 1500);
         }
       },
       error: function () {
@@ -272,7 +282,6 @@ $(document).on("submit", "#loginForm", function (e) {
       url: "./marcarNotificacion.php",
       data: { id_usuario: idUsuario, id_notificacion: idNotificacion },
       success: function (response) {
-        console.log("Respuesta AJAX:", response);
         boton
           .prop("disabled", true)
           .removeClass("btn-success")

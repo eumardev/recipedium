@@ -34,7 +34,6 @@ $notificaciones = $bd->getNotificacionesPorUsuario($id_usuario);
                 echo "<div class=\"notificacion-acciones\">";
                 if (!$notificacion['leida']) {
                     echo "<button class=\"btn marcar-leida\" data-id-usuario=\"" . $id_usuario . "\" data-id-notificacion=\"" . $notificacion['id_notificacion'] . "\">Marcar como leída</button>";
-                    // echo "<a href=\"./marcarNotificacion.php?id_usuario=" . $id_usuario . "&id_notificacion=" . $notificacion['id_notificacion'] . "\" class=\"btn \">Marcar como leída</a>";
                 }
                 echo "</div>";
                 echo "<p><strong>Fecha:</strong> " . 

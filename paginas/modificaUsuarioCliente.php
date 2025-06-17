@@ -36,7 +36,7 @@ $datos = $bd->getUsuarioId($id_usuario);
                 <input class="form-control " placeholder="Clave" name="clave" type="password" id="clave" value="<?php echo $datos[4]; ?>">
             </div>
             <input type="hidden" name="tipo_usu" value="<?php echo $datos[5]; ?>">
-            <input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>">
+            <input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo $id_usuario; ?>">
             <button type="submit" class="btn">Actualizar</button>
         </form>
         <div id="divRespuestaModificacion"></div>

@@ -19,8 +19,8 @@
     </aside>
     <section id="principal">
         <section>
-            <h2>AVISO LEGAL</h2>
-            <h3>LEY DE LOS SERVICIOS DE LA SOCIEDAD DE LA INFORMACIÓN (LSSI)</h3>
+            <h3>AVISO LEGAL</h3>
+            <h4>LEY DE LOS SERVICIOS DE LA SOCIEDAD DE LA INFORMACIÓN (LSSI)</h4>
             <p>
                 RECIPEDIUM S.L., responsable del sitio web, en adelante RESPONSABLE, pone a disposición de
                 los usuarios el

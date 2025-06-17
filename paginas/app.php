@@ -37,74 +37,29 @@
         </div>
 
 
-        <!-- con el siguiente bloque de codigo php vamos a definir la variable redir por defecto portada.php que se cargará en principal (main), pero si recibe alguna opcion, cargará el contenido del case que nos mostrará el archivo que esté dentro de cada opcion. El header,nav y footer se cargan mediante la funcion cargar -->
+        <!-- con el siguiente bloque de codigo php vamos a definir la variable redir por defecto portada.php que se cargará en principal (main), pero si recibe alguna opcion, cargará el contenido del case que nos mostrará el archivo que esté dentro de cada opcion.  -->
         <?php
         $redir = "cargar('#principal','./portada.php');";
         if (isset($_GET['opcion'])) {
             switch ($_GET['opcion']) {
-                case 1:
-                    $redir = "cargar('#principal','./verUsuarios.php');";
+                  case 1:
+                    $id = $_GET['id'];
+                    $redir = "cargar('#principal','./mReceta.php?id=$id');";
                     break;
                 case 2:
                     $id = $_GET['id'];
                     $redir = "cargar('#principal','./mUsuario.php?id=$id');";
                     break;
                 case 3:
-                    $redir = "cargar('#principal','./modificaUsuarioCliente.php');";
-                    break;
-                case 4:
-                    $redir = "cargar('#principal','./nuevoUsuario.php');";
-                    break;
-                case 5:
-                    $redir = "cargar('#principal','./eliminaUsuario.php');";
-                    break;
-                case 6:
-                    $redir = "cargar('#principal','./nuevaReceta.php');";
-                    break;
-                case 7:
-                    $redir = "cargar('#principal','./verRecetasCliente.php');";
-                    break;
-                case 8:
-                    $id = $_GET['id'];
-                    $redir = "cargar('#principal','./verRecetasAdmin.php?id=$id');";
-                    break;
-                case 9:
-                    $id = $_GET['id'];
-                    $redir = "cargar('#principal','./mReceta.php?id=$id');";
-                    break;
-                case 10:
-                    $id = $_GET['id'];
-                    $redir = "cargar('#principal','./eliminaReceta.php?id=$id');";
-                    break;
-                case 11:
-                    $redir = "cargar('#principal','./nuevaNotificacion.php');";
-                    break;
-                case 12:
-                    $redir = "cargar('#principal','./nuevaNotificacionCliente.php');";
-                    break;
-                case 13:
-                    $redir = "cargar('#principal','./verNotificaciones.php');";
-                    break;
-                case 14:
-                    $redir = "cargar('#principal','./verTodasNotificaciones.php');";
-                    break;
-                case 15:
                     $id = isset($_GET['id']) ? $_GET['id'] : null;
                     if ($id) {
                         $redir = "cargar('#principal','./mNotificacion.php?id=$id');";
                     }
                     break;
-                case 16:
-                    $id_receta = isset($_GET['id_receta']) ? $_GET['id_receta'] : null;
-                    $id_usuario = isset($_GET['id_usuario']) ? $_GET['id_usuario'] : null;
-                    if ($id_receta && $id_usuario) {
-                        $redir = "cargar('#principal','./aReceta.php?id_receta=$id_receta&id_usuario=$id_usuario');";
-                    }
-                    break;
             }
         }
         ?>
-
+<!-- El header,nav y footer se cargan mediante la llamada a la funcion cargar de este acript, son estáticos sin embargo el contenido principal se carga dinamicamente a traés de la variable $redir que queda definida en los case del switch -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 cargar('#barra', './barra.php');

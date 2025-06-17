@@ -54,7 +54,7 @@ class basededatos
         return false; // En caso de error en la consulta
     }
 
-    // Verificar si ya existe un usuario con ese nombre
+    // Verificar si ya existe un usuario con ese nombre, email o dni
     public function usuarioRegistrado($datos)
     {
         $datos = unserialize($datos);
@@ -137,7 +137,7 @@ class basededatos
     // método para crear una nueva receta
     public function crearReceta($datos)
     {
-        $datos = unserialize($datos);
+        $datos = unserialize($datos);   
         $this->conn->beginTransaction();
         $sql = "INSERT INTO recetas (id_receta, titulo, ingredientes, tiempo_preparacion, tiempo_total, instrucciones, id_usuario, publica, imagen) VALUES (?,?,?,?,?,?,?,?,?);";
         $resultado = $this->conn->prepare($sql);

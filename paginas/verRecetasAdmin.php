@@ -32,7 +32,7 @@ $datos = $bd->getRecetas();
                 echo '</div>';
                 echo '</div>';
                 echo '<div class="receta-acciones">';
-                echo '<a href="./app.php?opcion=9&id=' . htmlspecialchars($receta['id_receta']) . '" class="btn btn-warning">Modificar</a>';
+                echo '<a href="./app.php?opcion=1&id=' . htmlspecialchars($receta['id_receta']) . '" class="btn btn-warning">Modificar</a>';
                 echo '<button class="btn eliminar-receta" data-id="' . htmlspecialchars($receta['id_receta']) . '">Eliminar</button>';
                 echo '</div>';
                 echo '</div>';
