@@ -11,7 +11,7 @@ services:
       - mysql
     networks:
       - recipedium-network
-    command: /bin/bash -c "apt-get update && apt-get install -y libpq-dev && docker-php-ext-install mysqli pdo_mysql && mkdir -p /var/www/html/imagenes && chown -R www-data:www-data /var/www/html/imagenes && apache2-foreground"
+    command: /bin/bash -c "apt-get update && docker-php-ext-install mysqli pdo_mysql && mkdir -p /var/www/html/imagenes && chown -R www-data:www-data /var/www/html/imagenes && apache2-foreground"
 
   mysql:
     image: mysql:8.0
