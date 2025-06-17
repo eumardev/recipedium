@@ -135,15 +135,16 @@ class basededatos
     }
 
     // método para crear una nueva receta
-    public function crearReceta($datos)
-    {
-        $datos = unserialize($datos);   
-        $this->conn->beginTransaction();
-        $sql = "INSERT INTO recetas (id_receta, titulo, ingredientes, tiempo_preparacion, tiempo_total, instrucciones, id_usuario, publica, imagen) VALUES (?,?,?,?,?,?,?,?,?);";
-        $resultado = $this->conn->prepare($sql);
-        $resultado->execute(array(0, $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7], $datos[8]));
-        $this->conn->commit();
-    }
+ public function crearReceta($datos)
+{
+    $datos = unserialize($datos);   
+    $this->conn->beginTransaction();
+    $sql = "INSERT INTO recetas (id_receta, titulo, ingredientes, tiempo_preparacion, tiempo_total, instrucciones, id_usuario, publica, imagen) VALUES (?,?,?,?,?,?,?,?,?);";
+    $resultado = $this->conn->prepare($sql);
+    // $datos[8] ahora es la ruta de la imagen o null
+    $resultado->execute(array(0, $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7], $datos[8]));
+    $this->conn->commit();
+}
     // método para ver las recetas de un usuario cuyo id coincida con el recibido por parámetro
     public function getRecetasPorUsuario($id_usuario)
     {
@@ -151,7 +152,7 @@ class basededatos
             FROM recetas r
             JOIN usuarios u ON r.id_usuario = u.id_usuario
             WHERE r.id_usuario = :id_usuario
-            ORDER BY r.id_receta';
+            ORDER BY r.id_receta DESC';
         $resultado = $this->conn->prepare($sql);
         $resultado->execute(['id_usuario' => $id_usuario]);
         $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -164,7 +165,7 @@ class basededatos
         $sql = 'SELECT r.*, u.nombre AS autor 
                 FROM recetas r 
                 JOIN usuarios u ON r.id_usuario = u.id_usuario 
-                ORDER BY r.id_receta';
+                ORDER BY r.id_receta DESC';
         $resultado = $this->ejecutaConsulta($sql);
         if ($resultado) {
             $datos = $resultado->FetchAll();
@@ -190,7 +191,7 @@ class basededatos
                 FROM recetas r 
                 JOIN usuarios u ON r.id_usuario = u.id_usuario 
                 WHERE r.publica = 1 
-                ORDER BY r.id_receta';
+                ORDER BY r.id_receta DESC';
         $resultado = $this->ejecutaConsulta($sql);
         if ($resultado) {
             $datos = $resultado->FetchAll();
@@ -245,29 +246,32 @@ class basededatos
     }
 
     // método para actualizar los datos de una receta cuyo id coincida con el recibido en el array serializado
-    public function updateReceta($datos)
-    {
-        $datos = unserialize($datos);
-        $this->conn->beginTransaction();
+public function updateReceta($datos)
+{
+    $datos = unserialize($datos);
+    $this->conn->beginTransaction();
 
-        // Verificar si se ha proporcionado una nueva imagen o si se debe eliminar la imagen actual
-        if ($datos[8] !== null) {
-            if ($datos[8] === '') {
-                $sql = "UPDATE recetas SET titulo= ?, ingredientes= ?, tiempo_preparacion= ?, tiempo_total= ?, instrucciones = ?, publica = ?, imagen = NULL WHERE id_receta = ?;";
-                $params = array($datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[7], $datos[0]);
-            } else {
-                $sql = "UPDATE recetas SET titulo= ?, ingredientes= ?, tiempo_preparacion= ?, tiempo_total= ?, instrucciones = ?, publica = ?, imagen = ? WHERE id_receta = ?;";
-                $params = array($datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[7], $datos[8], $datos[0]);
-            }
-        } else {
-            $sql = "UPDATE recetas SET titulo= ?, ingredientes= ?, tiempo_preparacion= ?, tiempo_total= ?, instrucciones = ?, publica = ? WHERE id_receta = ?;";
+    // Si $datos[8] !== null, hay cambio en la imagen (nueva o eliminación)
+    if ($datos[8] !== null) {
+        if ($datos[8] === '') {
+            // Eliminar imagen (guardar NULL en la columna)
+            $sql = "UPDATE recetas SET titulo= ?, ingredientes= ?, tiempo_preparacion= ?, tiempo_total= ?, instrucciones = ?, publica = ?, imagen = NULL WHERE id_receta = ?;";
             $params = array($datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[7], $datos[0]);
+        } else {
+            // Guardar nueva ruta de imagen
+            $sql = "UPDATE recetas SET titulo= ?, ingredientes= ?, tiempo_preparacion= ?, tiempo_total= ?, instrucciones = ?, publica = ?, imagen = ? WHERE id_receta = ?;";
+            $params = array($datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[7], $datos[8], $datos[0]);
         }
-
-        $resultado = $this->conn->prepare($sql);
-        $resultado->execute($params);
-        $this->conn->commit();
+    } else {
+        // No se toca la imagen
+        $sql = "UPDATE recetas SET titulo= ?, ingredientes= ?, tiempo_preparacion= ?, tiempo_total= ?, instrucciones = ?, publica = ? WHERE id_receta = ?;";
+        $params = array($datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[7], $datos[0]);
     }
+
+    $resultado = $this->conn->prepare($sql);
+    $resultado->execute($params);
+    $this->conn->commit();
+}
 
     // método para eliminar una receta cuyo id coincida con el recibido por parámetro
     public function delReceta($id)

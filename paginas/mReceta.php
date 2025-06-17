@@ -2,7 +2,8 @@
 include_once './basededatos.php';
 $bd = new basededatos;
 $id = $_GET['id'];
-$datos = $bd->getRecetaId($id); ?>
+$datos = $bd->getRecetaId($id);
+?>
 <div class="container">
     <div class="">
         <div class="form-container">
@@ -18,9 +19,9 @@ $datos = $bd->getRecetaId($id); ?>
 
                 <div class="form-group">
                     <label for="foto" class="negrita ">Foto (opcional):</label>
-                    <?php if ($datos['imagen']): ?>
+                    <?php if (!empty($datos['imagen']) && file_exists($datos['imagen'])): ?>
                         <p>Imagen actual:</p>
-                        <img src="data:image/jpeg;base64,<?php echo base64_encode($datos['imagen']); ?>" alt="Imagen de la receta" style="width: 100px; height: auto;">
+                        <img src="<?php echo htmlspecialchars($datos['imagen']); ?>" alt="Imagen de la receta" style="width: 100px; height: auto;">
                         <input type="checkbox" name="eliminar_foto" id="eliminar_foto" value="1"> Eliminar foto actual
                     <?php endif; ?>
                     <input class="form-control" name="foto" type="file" id="foto">

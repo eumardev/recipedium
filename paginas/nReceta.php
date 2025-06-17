@@ -12,14 +12,22 @@ $bloque[6] = $_POST["id_usuario"];
 $bloque[7] = isset($_POST["publica"]) ? 1 : 0; // Si el checkbox está marcado, el valor es 1, de lo contrario, es 0
 
 // Manejo de la imagen
-$imagen = null;
-// comprueba si se ha subido un archivo, en nuestro caso una foto y que no haya errores
+$rutaImagen = null;
+$directorio = "../imagenes/";
+
 if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
-    // Si hay imagen, usa file_get_contents() para leer el contenido binario del archivo temporal subido y guarda ese contenido binario en la variable $imagen.
-    $imagen = file_get_contents($_FILES['foto']['tmp_name']);
+    $extension = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+    // Usamos un nombre único para evitar sobrescribir imágenes
+    $nombreArchivo = 'receta_' . uniqid() . '_' . time() . '.' . $extension;
+    $rutaDestino = $directorio . $nombreArchivo;
+
+    if (move_uploaded_file($_FILES['foto']['tmp_name'], $rutaDestino)) {
+        $rutaImagen = $rutaDestino;
+    }
 }
-// Añade la imagen al array $bloque en la posición 8
-$bloque[8] = $imagen;
+
+// Añade la ruta de la imagen al array $bloque en la posición 8
+$bloque[8] = $rutaImagen;
 
 // Serializar el array $bloque
 $dat = serialize($bloque);
@@ -29,3 +37,4 @@ $bd->crearReceta($dat);
 
 // Devolvemos una respuesta en lugar de redirigir
 echo 'Receta creada correctamente.';
+?>

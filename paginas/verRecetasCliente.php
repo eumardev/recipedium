@@ -28,8 +28,8 @@ $datos = $bd->getRecetasPorUsuario($id_usuario);
             echo '<div class="filter-text receta-titulo"><h3>' . htmlspecialchars($receta['titulo']) . '</h3></div>';
             echo '<div class="receta-contenido">';
             echo '<div class="receta-imagen">';
-            if ($receta['imagen']) {
-                echo '<img src="data:image/jpeg;base64,' . base64_encode($receta['imagen']) . '" alt="Imagen de la receta">';
+            if (!empty($receta['imagen']) && file_exists($receta['imagen'])) {
+                echo '<img src="' . htmlspecialchars($receta['imagen']) . '" alt="Imagen de la receta">';
             }
             echo '</div>';
             echo '<div class="receta-data">';

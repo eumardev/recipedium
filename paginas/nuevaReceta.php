@@ -13,7 +13,8 @@ $id_usuario = $datosusuario['id_usuario']; // Obtener el ID del usuario de la se
 
 <div class="container">
     <div class="form-container"> 
-            <h2 class="">Nueva Receta</h2>
+        <h2 class="">Nueva Receta</h2>
+        <!-- El formulario ya está preparado para subir imágenes como archivo -->
         <form id="recetaForm" method="POST" enctype="multipart/form-data" action="#">
             <div class="form-group">
                 <label for="titulo" class="negrita ">Título:</label>
@@ -21,7 +22,7 @@ $id_usuario = $datosusuario['id_usuario']; // Obtener el ID del usuario de la se
             </div>
             <div class="form-group">
                 <label for="foto" class="negrita ">Foto (opcional):</label>
-                <input class="form-control " name="foto" type="file" id="foto">
+                <input class="form-control" name="foto" type="file" id="foto">
             </div>
             <div class="form-group">
                 <label for="ingredientes" class="negrita ">Ingredientes:</label>
@@ -29,15 +30,15 @@ $id_usuario = $datosusuario['id_usuario']; // Obtener el ID del usuario de la se
             </div>
             <div class="form-group">
                 <label for="tiempo_preparacion" class="negrita ">Tiempo de preparación (minutos):</label>
-                <input class="form-control " placeholder="Tiempo de preparación en minutos"  name="tiempo_preparacion" type="text" id="tiempo_preparacion" value="">
+                <input class="form-control" placeholder="Tiempo de preparación en minutos"  name="tiempo_preparacion" type="text" id="tiempo_preparacion" value="">
             </div>
             <div class="form-group">
                 <label for="tiempo_total" class="negrita ">Tiempo total (minutos):</label>
-                <input class="form-control " placeholder="Tiempo total en minutos"  name="tiempo_total" type="text" id="tiempo_total" value="">
+                <input class="form-control" placeholder="Tiempo total en minutos"  name="tiempo_total" type="text" id="tiempo_total" value="">
             </div>
             <div class="form-group">
                 <label for="instrucciones" class="negrita ">Instrucciones:</label>
-                <textarea class="form-control " placeholder="Instrucciones de la receta"  name="instrucciones" id="instrucciones"></textarea>
+                <textarea class="form-control" placeholder="Instrucciones de la receta"  name="instrucciones" id="instrucciones"></textarea>
             </div>
             <input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>">
             <div class="form-group checkbox-container">
@@ -49,4 +50,3 @@ $id_usuario = $datosusuario['id_usuario']; // Obtener el ID del usuario de la se
         <div id="divRespuesta"></div>
     </div>
 </div>
-

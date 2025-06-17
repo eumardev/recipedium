@@ -24,7 +24,7 @@ CREATE TABLE recetas (
     instrucciones VARCHAR(2000) NOT NULL,
     id_usuario INT NOT NULL,
     publica BOOLEAN DEFAULT FALSE,
-    imagen LONGBLOB, -- Campo opcional para la imagen
+    imagen VARCHAR(1000), -- Campo opcional para la imagen
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON UPDATE CASCADE ON DELETE CASCADE
 );

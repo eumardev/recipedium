@@ -211,7 +211,6 @@ $(document).ready(function () {
 
   $(document).on("submit", "#modificaRecetaForm", function (e) {
     e.preventDefault();
-    console.log("AJAX submit capturado");
     if (typeof validateRecetaForm === "function" && !validateRecetaForm()) {
       return false;
     }
