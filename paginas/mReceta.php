@@ -20,7 +20,6 @@ $datos = $bd->getRecetaId($id);
                 <div class="form-group">
                     <label for="foto" class="negrita ">Foto (opcional):</label>
                     <?php if (!empty($datos['imagen']) && file_exists($datos['imagen'])): ?>
-                        <p>Imagen actual:</p>
                         <img src="<?php echo htmlspecialchars($datos['imagen']); ?>" alt="Imagen de la receta" style="width: 100px; height: auto;">
                         <input type="checkbox" name="eliminar_foto" id="eliminar_foto" value="1"> Eliminar foto actual
                     <?php endif; ?>

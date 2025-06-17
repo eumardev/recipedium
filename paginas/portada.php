@@ -30,8 +30,8 @@ $datos = $bd->getRecetasPublicas();
             echo "<div class=\"receta-contenido\">";
             // Mostramos la foto si está disponible, el div se crea siempre para mantener la estructura
             echo "<div class=\"receta-imagen\">";
-            if (!empty($receta['imagen']) && file_exists($receta['imagen'])) {
-                echo "<img src=\"" . htmlspecialchars($receta['imagen']) . "\" alt=\"Imagen de la receta\">";
+            if (!empty($receta['imagen'])) {
+                echo '<img src="' . htmlspecialchars($receta['imagen']) . '" alt="Imagen de la receta">';
             }
             echo "</div>";
             echo "<div class=\"receta-data\">";

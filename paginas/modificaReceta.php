@@ -18,8 +18,8 @@ $datos = $bd->getRecetas();
             echo "<div class=\"receta-contenido\">";
             // Mostrar la foto si está disponible
             echo '<div class="receta-imagen">';
-            if ($receta['imagen']) {
-                echo '<img src="data:image/jpeg;base64,' . base64_encode($receta['imagen']) . '" alt="Imagen de la receta">';
+            if (!empty($receta['imagen'])) {
+                echo '<img src="' . htmlspecialchars($receta['imagen']) . '" alt="Imagen de la receta">';
             }
             echo '</div>';
             echo "<div class=\"receta-data\">";
