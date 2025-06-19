@@ -127,24 +127,51 @@ class basededatos
     }
 
     // método para eliminar un usuario cuyo id coincida con el recibido por parámetro
+    // public function delUsuario($id)
+    // {
+    //     $sql = "DELETE FROM usuarios WHERE id_usuario=$id";
+    //     $resultado = $this->ejecutaConsulta($sql);
+    //     return $resultado !== false; // Devuelve true si la consulta fue bien
+    // }
+
     public function delUsuario($id)
     {
-        $sql = "DELETE FROM usuarios WHERE id_usuario=$id";
-        $resultado = $this->ejecutaConsulta($sql);
-        return $resultado !== false; // Devuelve true si la consulta fue bien
+        try {
+            // Eliminar relaciones en usuario_receta
+            $this->ejecutaConsulta("DELETE FROM usuario_receta WHERE id_usuario = $id");
+
+            // Eliminar relaciones en usuario_notificacion donde el usuario es destinatario
+            $this->ejecutaConsulta("DELETE FROM usuario_notificacion WHERE id_usuario = $id");
+
+            // Eliminar notificaciones asociadas al usuario (como remitente o cliente)
+            $this->ejecutaConsulta("DELETE FROM notificaciones WHERE remitente_ID = $id OR cliente_ID = $id");
+
+            // Eliminar recetas del usuario
+            $this->ejecutaConsulta("DELETE FROM recetas WHERE id_usuario = $id");
+
+            // Eliminar usuario
+            $sql = "DELETE FROM usuarios WHERE id_usuario = $id";
+            $resultado = $this->ejecutaConsulta($sql);
+
+            return $resultado !== false;
+            // si no ha ido bien, lanzará una excepción que será capturada en el bloque catch y se mostrará en la response de la petición que podremos ver en la consola del navegador en la pestaña de network (pinchando en la petición que hemos hecho y luego en la pestaña response de la propia peticion)
+        } catch (Exception $ex) {
+            echo "Error: " . $ex->getMessage();
+            return false;
+        }
     }
 
     // método para crear una nueva receta
- public function crearReceta($datos)
-{
-    $datos = unserialize($datos);   
-    $this->conn->beginTransaction();
-    $sql = "INSERT INTO recetas (id_receta, titulo, ingredientes, tiempo_preparacion, tiempo_total, instrucciones, id_usuario, publica, imagen) VALUES (?,?,?,?,?,?,?,?,?);";
-    $resultado = $this->conn->prepare($sql);
-    // $datos[8] ahora es la ruta de la imagen o null
-    $resultado->execute(array(0, $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7], $datos[8]));
-    $this->conn->commit();
-}
+    public function crearReceta($datos)
+    {
+        $datos = unserialize($datos);
+        $this->conn->beginTransaction();
+        $sql = "INSERT INTO recetas (id_receta, titulo, ingredientes, tiempo_preparacion, tiempo_total, instrucciones, id_usuario, publica, imagen) VALUES (?,?,?,?,?,?,?,?,?);";
+        $resultado = $this->conn->prepare($sql);
+        // $datos[8] ahora es la ruta de la imagen o null
+        $resultado->execute(array(0, $datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6], $datos[7], $datos[8]));
+        $this->conn->commit();
+    }
     // método para ver las recetas de un usuario cuyo id coincida con el recibido por parámetro
     public function getRecetasPorUsuario($id_usuario)
     {
@@ -246,32 +273,32 @@ class basededatos
     }
 
     // método para actualizar los datos de una receta cuyo id coincida con el recibido en el array serializado
-public function updateReceta($datos)
-{
-    $datos = unserialize($datos);
-    $this->conn->beginTransaction();
+    public function updateReceta($datos)
+    {
+        $datos = unserialize($datos);
+        $this->conn->beginTransaction();
 
-    // Si $datos[8] !== null, hay cambio en la imagen (nueva o eliminación)
-    if ($datos[8] !== null) {
-        if ($datos[8] === '') {
-            // Eliminar imagen (guardar NULL en la columna)
-            $sql = "UPDATE recetas SET titulo= ?, ingredientes= ?, tiempo_preparacion= ?, tiempo_total= ?, instrucciones = ?, publica = ?, imagen = NULL WHERE id_receta = ?;";
-            $params = array($datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[7], $datos[0]);
+        // Si $datos[8] !== null, hay cambio en la imagen (nueva o eliminación)
+        if ($datos[8] !== null) {
+            if ($datos[8] === '') {
+                // Eliminar imagen (guardar NULL en la columna)
+                $sql = "UPDATE recetas SET titulo= ?, ingredientes= ?, tiempo_preparacion= ?, tiempo_total= ?, instrucciones = ?, publica = ?, imagen = NULL WHERE id_receta = ?;";
+                $params = array($datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[7], $datos[0]);
+            } else {
+                // Guardar nueva ruta de imagen
+                $sql = "UPDATE recetas SET titulo= ?, ingredientes= ?, tiempo_preparacion= ?, tiempo_total= ?, instrucciones = ?, publica = ?, imagen = ? WHERE id_receta = ?;";
+                $params = array($datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[7], $datos[8], $datos[0]);
+            }
         } else {
-            // Guardar nueva ruta de imagen
-            $sql = "UPDATE recetas SET titulo= ?, ingredientes= ?, tiempo_preparacion= ?, tiempo_total= ?, instrucciones = ?, publica = ?, imagen = ? WHERE id_receta = ?;";
-            $params = array($datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[7], $datos[8], $datos[0]);
+            // No se toca la imagen
+            $sql = "UPDATE recetas SET titulo= ?, ingredientes= ?, tiempo_preparacion= ?, tiempo_total= ?, instrucciones = ?, publica = ? WHERE id_receta = ?;";
+            $params = array($datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[7], $datos[0]);
         }
-    } else {
-        // No se toca la imagen
-        $sql = "UPDATE recetas SET titulo= ?, ingredientes= ?, tiempo_preparacion= ?, tiempo_total= ?, instrucciones = ?, publica = ? WHERE id_receta = ?;";
-        $params = array($datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[7], $datos[0]);
-    }
 
-    $resultado = $this->conn->prepare($sql);
-    $resultado->execute($params);
-    $this->conn->commit();
-}
+        $resultado = $this->conn->prepare($sql);
+        $resultado->execute($params);
+        $this->conn->commit();
+    }
 
     // método para eliminar una receta cuyo id coincida con el recibido por parámetro
     public function delReceta($id)
@@ -374,7 +401,7 @@ public function updateReceta($datos)
             }
         }
     }
-
+    // metodo para inserta notificación
     public function insertarNotificacion($remitente_ID, $cliente_ID, $mensaje)
     {
         // Insertar en la tabla notificaciones

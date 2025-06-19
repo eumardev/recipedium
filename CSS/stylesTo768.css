@@ -25,7 +25,7 @@
   text-align: center;
   gap: 1vw;
   font-weight: bold;
-  width: 100%; /* Asegura que ocupa todo el ancho */
+  width: 100%; 
   min-width: 100vw;
   max-width: 1200px;
   margin: 0 auto;
@@ -678,7 +678,7 @@ nav {
   display: none;
 }
 
-/* ----------- NUEVA ESTRUCTURA ASIDE (sidebar-list) ----------- */
+/* NUEVA ESTRUCTURA ASIDE (sidebar-list)*/
 #sidebar .sidebar-list {
   display: flex;
   flex-direction: row;
@@ -705,7 +705,7 @@ nav {
   font-weight: bold;
 }
 
-/* ----------- CENTRAR TODOS LOS ENLACES DE NAV Y ASIDE ----------- */
+/* CENTRA TODOS LOS ENLACES DE NAV Y ASIDE*/
 .navbar-nav > .nav-item > .nav-link,
 .navbar-nav > .nav-item > a,
 .dropdown-item,

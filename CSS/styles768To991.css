@@ -75,7 +75,8 @@
 }
 
 #sidebar nav {
-  width: 100%; /* Asegura que el nav ocupa todo el ancho del sidebar */
+  /* Asegura que el nav ocupa todo el ancho del sidebar */
+  width: 100%; 
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -88,11 +89,11 @@
   gap: 1em;
   padding: 0;
   margin: 0;
-  width: 100%; /* Ocupa todo el ancho del nav */
+  width: 100%; 
 }
 
 #sidebar .sidebar-list li {
-  width: 100%; /* Ocupa todo el ancho del contenedor */
+  width: 100%; 
 }
 
 #sidebar .sidebar-list a {
@@ -103,7 +104,7 @@
   border-radius: 4px;
   display: block;
   transition: background 0.2s, color 0.2s;
-  width: 100%; /* Ocupa todo el ancho del li */
+  width: 100%; 
   box-sizing: border-box;
    text-align: center; 
 }
@@ -143,7 +144,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-bottom: 1vh; /*esto solo lo aplico si decido usar el footer fijo en pie de pantalla*/
+  padding-bottom: 1vh; 
 }
 
 #principal {
@@ -340,7 +341,7 @@ button.btn {
   margin-bottom: 0.5em;
 }
 
-/* Receta: imagen y datos - MODIFICADO PARA TABLET */
+/* Receta: imagen y datos - modificado tablet */
 .receta-item {
   display: flex;
   flex-direction: column;

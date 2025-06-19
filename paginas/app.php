@@ -42,7 +42,7 @@
         $redir = "cargar('#principal','./portada.php');";
         if (isset($_GET['opcion'])) {
             switch ($_GET['opcion']) {
-                  case 1:
+                case 1:
                     $id = $_GET['id'];
                     $redir = "cargar('#principal','./mReceta.php?id=$id');";
                     break;
@@ -59,7 +59,7 @@
             }
         }
         ?>
-<!-- El header,nav y footer se cargan mediante la llamada a la funcion cargar de este acript, son estáticos sin embargo el contenido principal se carga dinamicamente a traés de la variable $redir que queda definida en los case del switch -->
+        <!-- El header,nav y footer se cargan mediante la llamada a la funcion cargar de este acript, son estáticos sin embargo el contenido principal se carga dinamicamente a traés de la variable $redir que queda definida en los case del switch -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 cargar('#barra', './barra.php');

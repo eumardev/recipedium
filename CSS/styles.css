@@ -84,14 +84,15 @@ body {
   flex-direction: column;
   padding-bottom: 5vh; /*esto solo lo aplico si decido usar el footer fijo en pie de pantalla*/
 }
+ /* Ajusta 120px al alto real de header+nav */
 #principal {
   min-height: calc(
     100vh - 8vh - 120px
-  ); /* Ajusta 120px al alto real de tu header+nav */
+  );
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5vh; /* Menos espacio vertical */
+  gap: 1.5vh; 
   padding: 3vh 1vh;
   background-color: #ecf1f6;
   padding-bottom: 18vh; /* esto para que el footer no tape el final del main */
@@ -99,7 +100,7 @@ body {
 
 /* Contenedores principales */
 .container-fluid {
-  width: 90vw; /* Ahora ocupa el 90% */
+  width: 90vw; 
   max-width: 1200px;
   margin: 0 auto;
   padding: 0;
@@ -139,13 +140,13 @@ body {
   padding: 1.2vw;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 90vw; /* Ahora ocupa el 90% */
+  width: 90vw; 
   max-width: 600px;
   min-width: 220px;
   margin: 1.2vh auto;
   display: flex;
   flex-direction: column;
-  gap: 1.2vh; /* Menos espacio vertical */
+  gap: 1.2vh; 
 }
 
 /* Listas */
@@ -155,7 +156,7 @@ body {
 .notificaciones-list {
   display: flex;
   flex-direction: column;
-  gap: 1.2vh; /* Menos espacio vertical */
+  gap: 1.2vh; 
   align-items: center;
   width: 100%;
 }
@@ -192,7 +193,7 @@ button.btn {
   transition: background 0.2s;
   display: block;
   width: 100%;
-  margin: 0.5vh 0 0 0; /* Menos margen superior */
+  margin: 0.5vh 0 0 0; 
   box-sizing: border-box;
 }
 .btn:hover,
@@ -224,7 +225,7 @@ button.btn {
   max-width: 600px;
   margin: 1.2vh auto;
 }
-/* para el maind e index.php */
+/* para el main de index.php */
 .main-index {
   width: 90vw;
   max-width: 1200px;
@@ -524,7 +525,8 @@ button.btn {
   object-fit: contain;
   vertical-align: middle;
   transition: transform 0.2s;
-  margin-left: 1vw; /* Espacio entre el nombre y el icono */
+  /* Espacio entre el nombre y el icono */
+  margin-left: 1vw; 
 }
 .navbar-nav {
   display: flex;
@@ -767,7 +769,7 @@ select {
 .listas-html {
   display: flex;
   flex-direction: column;
-  gap: 1.2vh; /* Menos espacio vertical */
+  gap: 1.2vh; 
   align-items: flex-start;
   width: 100%;
   margin-left: 2em;

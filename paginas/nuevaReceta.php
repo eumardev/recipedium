@@ -14,7 +14,6 @@ $id_usuario = $datosusuario['id_usuario']; // Obtener el ID del usuario de la se
 <div class="container">
     <div class="form-container"> 
         <h2 class="">Nueva Receta</h2>
-        <!-- El formulario ya está preparado para subir imágenes como archivo -->
         <form id="recetaForm" method="POST" enctype="multipart/form-data" action="#">
             <div class="form-group">
                 <label for="titulo" class="negrita ">Título:</label>

@@ -5,11 +5,15 @@ $bd = new basededatos;
 if (isset($_POST['id_usuario'])) {
     $id = $_POST['id_usuario'];
   
-    if ($bd->delUsuario($id)) {
-        echo 'eliminado';
-    } else {
-        echo 'error';
-    }
+    $result = $bd->delUsuario($id);
+if ($result === true) {
+    echo 'eliminado';
+}
+    // if ($bd->delUsuario($id)) {
+    //     echo 'eliminado';
+    // } else {
+    //     echo 'error';
+    // }
 } else {
     echo 'error';
 }
